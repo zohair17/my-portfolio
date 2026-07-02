@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* matte black hero theme */
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +13,48 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
+}
+
+/* Keep the page from ever scrolling sideways — ambient blur blobs, the
+   horizontal Process track and oversized mockups can otherwise push past the
+   viewport edge and make the whole layout feel broken on small screens. */
+html,
+body {
+  max-width: 100%;
+  /* `clip` (not `hidden`) so we don't create a scroll container — that would
+     break the Hero's `position: sticky` and GSAP's pinned sections. */
+  overflow-x: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Scrollbar tinted with the same indigo → fuchsia shader palette. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #7c3aed #0a0a0a;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid #0a0a0a;
+  background: linear-gradient(180deg, #6366f1, #d946ef);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #818cf8, #e879f9);
 }
