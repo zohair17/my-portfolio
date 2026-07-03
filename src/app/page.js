@@ -1,4 +1,5 @@
 import SmoothScroll from "./components/SmoothScroll";
+import Loader from "./components/Loader";
 import HeroSection from "./components/HeroSection";
 import PhilosophySection from "./components/PhilosophySection";
 import SkillsSection from "./components/SkillsSection";
@@ -13,6 +14,7 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <SmoothScroll>
+      <Loader />
       <main className="bg-[#0a0a0a]">
         <HeroSection />
         <PhilosophySection />
