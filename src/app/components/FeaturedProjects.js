@@ -12,21 +12,21 @@ const PROJECTS = [
     desc: "A headless storefront with buttery product transitions and instant checkout.",
     stack: ["Next.js", "GSAP", "Stripe", "Tailwind"],
     tint: "from-indigo-600/30 to-fuchsia-600/20",
-    screen: "linear-gradient(135deg,#4f46e5,#db2777)",
+    screen: "url('/asset/Darimooch/hero%20section.png')",
   },
   {
     title: "Nebula Analytics",
     desc: "Real-time data visualisation dashboard with 3D charts and live streams.",
     stack: ["React", "Three.js", "WebSocket", "D3"],
     tint: "from-sky-500/30 to-emerald-500/20",
-    screen: "linear-gradient(135deg,#0ea5e9,#10b981)",
+    screen: "url('/asset/TCS/hero.png')",
   },
   {
     title: "Studio Motion",
     desc: "An award-style agency site built around scroll-scrubbed cinematic footage.",
     stack: ["Next.js", "Framer Motion", "Lenis", "GLSL"],
     tint: "from-amber-500/30 to-rose-500/20",
-    screen: "linear-gradient(135deg,#f59e0b,#f43f5e)",
+    screen: "url('/asset/Elyscents/hero%20section.png')",
   },
 ];
 
@@ -125,7 +125,7 @@ function Project({ project, index }) {
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
               </div>
               <div
-                className="aspect-video w-full rounded-lg"
+                className="aspect-video w-full rounded-lg bg-cover bg-center"
                 style={{ backgroundImage: project.screen }}
               />
             </div>
