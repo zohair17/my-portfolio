@@ -2,10 +2,13 @@
 
 
 # Problem
+1. Featured Projects:
+- Is this possible if we click on vie gallery then the laptop will rotate into 360
+
 
 
 # Update
-1. Featured Projects:
-. Can you remove the full sections of featured project and instead of this use a stack card that contains the same informtation and a laptop screen
+
+- 
 
 
