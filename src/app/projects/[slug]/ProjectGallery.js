@@ -41,21 +41,10 @@ export default function ProjectGallery({ data }) {
           transition={{ duration: 1.6, ease }}
           className="absolute inset-0"
         >
-          {video ? (
-            <video
-              className="h-full w-full object-cover"
-              src={video}
-              autoPlay
-              loop
-              playsInline
-              controls
-            />
-          ) : (
-            <div
-              className="h-full w-full bg-cover bg-center"
-              style={{ backgroundImage: `url('${hero}')` }}
-            />
-          )}
+          <div
+            className="h-full w-full bg-cover bg-center"
+            style={{ backgroundImage: `url('${hero}')` }}
+          />
         </motion.div>
 
         {/* bottom fade only (pointer-events off so the video controls stay usable) */}
@@ -102,34 +91,68 @@ export default function ProjectGallery({ data }) {
         </motion.p>
       </section>
 
-      {/* ── Screenshot walkthrough ── */}
-      <section className="mx-auto max-w-5xl px-5 py-24 sm:py-32">
-        {shots.map((shot, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.9, ease }}
-            className="mb-24 last:mb-0 sm:mb-32"
-          >
-            <div className="mb-6">
-              <p className="text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                {shot.title}
-              </h2>
-              <p className="mt-3 max-w-2xl text-base leading-relaxed text-zinc-400">
-                {shot.body}
-              </p>
+      {/* ── Screenshot walkthrough (alternating 2-column layout) ── */}
+      <section className="mx-auto max-w-6xl px-5 py-24 sm:py-28">
+        {shots.map((shot, i) => {
+          const imgFirst = i % 2 === 0; // even → image left, odd → image right
+          return (
+            <div
+              key={i}
+              className="mb-24 grid items-center gap-10 last:mb-0 sm:mb-28 lg:grid-cols-2 lg:gap-16"
+            >
+              <motion.div
+                initial={{ opacity: 0, x: imgFirst ? -60 : 60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, ease }}
+                className={imgFirst ? "lg:order-1" : "lg:order-2"}
+              >
+                <BrowserFrame src={shot.src} alt={`${name} — ${shot.title}`} />
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: imgFirst ? 60 : -60 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, ease }}
+                className={imgFirst ? "lg:order-2" : "lg:order-1"}
+              >
+                <p className="text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                  {shot.title}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-zinc-400">
+                  {shot.body}
+                </p>
+              </motion.div>
             </div>
-            <BrowserFrame src={shot.src} alt={`${name} — ${shot.title}`} />
-          </motion.div>
-        ))}
+          );
+        })}
       </section>
 
-      {/* ── Original comparison ── */}
+      {/* ── Video walkthrough (comes first) ── */}
+      {video && (
+        <section className="border-t border-white/5 bg-black px-5 py-24 text-center">
+          <div className="mx-auto max-w-5xl">
+            <p className="text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
+              In motion
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Watch the walkthrough
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-zinc-400">
+              See the revamp come alive — press play for the full experience with sound.
+            </p>
+            <div className="mt-10 overflow-hidden rounded-2xl border border-white/12 shadow-[0_40px_120px_rgba(0,0,0,0.6)]">
+              <video className="w-full" src={video} controls playsInline preload="metadata" />
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── Original comparison (comes after the walkthrough) ── */}
       {original && (
         <section className="border-t border-white/5 bg-[#080808] px-5 py-24 text-center">
           <div className="mx-auto max-w-2xl">
