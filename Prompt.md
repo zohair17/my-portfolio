@@ -3,11 +3,7 @@
 
 # Problem
 
-
+1)  when we go back for example if i open the 4th project , and when we click on back then it dosne't continues from 4 instead it continues from the hero section.
 
 
 # Update
-1. Featured Project:
-- currently the original website is coming first then after we scroll then the watch the walkthrough comes, but i want that what the walk through comes first then the original website section come
-
-

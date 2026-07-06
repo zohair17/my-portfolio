@@ -1,41 +1,41 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { Images, FileText } from "lucide-react";
-import { Github } from "./BrandIcons";
 
 const PROJECTS = [
   {
-    title: "Aurora Commerce",
+    title: "Dari Mooch",
     slug: "darimooch",
-    desc: "A headless storefront with buttery product transitions and instant checkout.",
-    stack: ["Next.js", "GSAP", "Stripe", "Tailwind"],
-    tint: "from-indigo-600/25 to-fuchsia-600/15",
+    desc: "A men's grooming and beard-care brand, revamped with a bold, masculine storefront and cinematic product storytelling.",
+    stack: ["Next.js", "GSAP", "Shopify", "Tailwind"],
+    tint: "from-amber-600/25 to-orange-700/15",
     screen: "url('/asset/Darimooch/hero%20section.png')",
   },
   {
-    title: "Nebula Analytics",
+    title: "TCS",
     slug: "tcs",
-    desc: "Real-time data visualisation dashboard with 3D charts and live streams.",
-    stack: ["React", "Three.js", "WebSocket", "D3"],
+    desc: "Pakistan's largest courier network, reimagined with a cleaner, tracking-first experience and a modern, trustworthy interface.",
+    stack: ["Next.js", "React", "GSAP", "Tailwind"],
     tint: "from-sky-500/25 to-emerald-500/15",
     screen: "url('/asset/TCS/hero.png')",
   },
   {
-    title: "Studio Motion",
+    title: "Elyscents",
     slug: "elyscents",
-    desc: "An award-style agency site built around scroll-scrubbed cinematic footage.",
-    stack: ["Next.js", "Framer Motion", "Lenis", "GLSL"],
-    tint: "from-amber-500/25 to-rose-500/15",
+    desc: "A premium fragrance house redesigned around atmosphere, scent storytelling and an elegant shopping experience.",
+    stack: ["Next.js", "Framer Motion", "Shopify", "Tailwind"],
+    tint: "from-fuchsia-600/25 to-rose-500/15",
     screen: "url('/asset/Elyscents/hero%20section.png')",
   },
   {
-    title: "Shilajit Reserve",
+    title: "Shilajit Energy Drink",
     slug: "shilajit",
-    desc: "A premium wellness brand experience with immersive product storytelling and checkout.",
-    stack: ["Next.js", "GSAP", "Tailwind", "Shopify"],
+    desc: "An energy drink crafted with Shilajit and Zamzam water, presented through a bold, high-energy brand experience.",
+    stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
     tint: "from-emerald-600/25 to-lime-500/15",
     screen: "url('/asset/Shilajeet/Hero%20section.png')",
   },
@@ -65,6 +65,7 @@ function LaptopMockup({ screen, screenRef }) {
 
 function ProjectCard({ project, index }) {
   const router = useRouter();
+  const wrapperRef = useRef(null);
   const cardLaptopRef = useRef(null);
   const stageRef = useRef(null);
   const backdropRef = useRef(null);
@@ -79,6 +80,10 @@ function ProjectCard({ project, index }) {
   const openGallery = () => {
     if (busy.current) return;
     busy.current = true;
+
+    // Lift this card's whole (sticky) stacking context above every sibling card
+    // so the fullscreen stage/overlay can't be painted over by later projects.
+    gsap.set(wrapperRef.current, { zIndex: 300 });
 
     const rect = cardLaptopRef.current.getBoundingClientRect();
     const cx = (window.innerWidth - rect.width) / 2;
@@ -134,7 +139,12 @@ function ProjectCard({ project, index }) {
   };
 
   return (
-    <div className="sticky" style={{ top: `${96 + index * 26}px` }}>
+    <div
+      ref={wrapperRef}
+      id={`project-${project.slug}`}
+      className="sticky scroll-mt-24"
+      style={{ top: `${96 + index * 26}px` }}
+    >
       <div className="relative mb-8 overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0d] shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
         <div
           className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.tint}`}
@@ -169,12 +179,12 @@ function ProjectCard({ project, index }) {
               >
                 <Images className="h-4 w-4" strokeWidth={1.75} /> View Gallery
               </button>
-              <a className="flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
+              <Link
+                href={`/projects/${project.slug}/case-study`}
+                className="flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10"
+              >
                 <FileText className="h-4 w-4" strokeWidth={1.75} /> Case Study
-              </a>
-              <a className="flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10">
-                <Github className="h-4 w-4" strokeWidth={1.75} /> GitHub
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -186,7 +196,7 @@ function ProjectCard({ project, index }) {
 
       {/* fullscreen stage — the laptop flies here, spins, then its screen zooms */}
       <div ref={stageRef} className="fixed inset-0 z-[200] hidden">
-        <div ref={backdropRef} className="absolute inset-0 bg-black/85 opacity-0 backdrop-blur-sm" />
+        <div ref={backdropRef} className="absolute inset-0 bg-black opacity-0 backdrop-blur-sm" />
         <div ref={flyRef} className="absolute">
           <LaptopMockup screen={project.screen} screenRef={screenRef} />
         </div>

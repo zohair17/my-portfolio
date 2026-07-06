@@ -229,7 +229,7 @@ export default function HeroSection() {
             style={{ opacity: 0 }}
             className="text-5xl font-semibold tracking-tight text-white sm:text-7xl md:text-8xl"
           >
-            About Me
+            Crafted in Motion
           </h2>
 
           <div
@@ -237,9 +237,9 @@ export default function HeroSection() {
             style={{ opacity: 0 }}
             className="mt-6 max-w-2xl space-y-2 text-xl font-medium leading-snug text-zinc-200 sm:mt-8 sm:text-2xl md:text-3xl"
           >
-            <p>I don&apos;t build websites. I craft experiences.</p>
-            <p>Every interaction should tell a story.</p>
-            <p className="text-zinc-400">Motion. Emotion. Performance.</p>
+            <p>Interfaces designed to move, feel, and respond.</p>
+            <p>Where engineering precision meets creative detail.</p>
+            <p className="text-zinc-400">Design. Motion. Performance.</p>
           </div>
         </div>
       </div>

@@ -6,10 +6,10 @@ import { Mail, FileText } from "lucide-react";
 import { Linkedin, Instagram, Behance } from "./BrandIcons";
 
 const LINKS = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/zohair-ahmed-62b525190/" },
   { icon: Mail, label: "Email", href: "mailto:zohairahmed17@gmail.com" },
-  { icon: Behance, label: "Behance", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Behance, label: "Behance", href: "https://www.behance.net/zohairahmed6" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/zohair.thedeveloper/reels/" },
   { icon: FileText, label: "Resume", href: "#" },
 ];
 
@@ -115,6 +115,8 @@ export default function TechPlayground() {
             <a
               key={label}
               href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
             >
               <Icon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" strokeWidth={1.75} />

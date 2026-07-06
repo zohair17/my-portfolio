@@ -20,14 +20,14 @@ function BrowserFrame({ src, alt }) {
   );
 }
 
-export default function ProjectGallery({ data }) {
+export default function ProjectGallery({ data, slug }) {
   const { name, tagline, summary, video, hero, original, shots } = data;
 
   return (
     <main className="w-full bg-[#050505]">
       {/* back */}
       <Link
-        href="/#work"
+        href={slug ? `/#project-${slug}` : "/#work"}
         className="fixed left-5 top-5 z-50 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/10"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={1.75} /> Back

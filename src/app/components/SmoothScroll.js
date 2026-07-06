@@ -24,7 +24,33 @@ export default function SmoothScroll({ children }) {
     // Expose so sections (e.g. footer scroll-to-top) can drive it.
     window.__lenis = lenis;
 
+    // Honour an initial #hash (e.g. returning from a project via "Back" to
+    // /#project-<slug>). Lenis starts at the top and lazy-loaded images above
+    // the target keep shifting layout, so a single scrollTo either fires too
+    // early or gets overridden back to the hero. Re-apply it until it sticks,
+    // and bail the moment the user takes over.
+    let cancelled = false;
+    if (window.location.hash) {
+      const target = window.location.hash;
+      const stop = () => {
+        cancelled = true;
+      };
+      window.addEventListener("wheel", stop, { once: true, passive: true });
+      window.addEventListener("touchstart", stop, { once: true, passive: true });
+      window.addEventListener("keydown", stop, { once: true });
+
+      let tries = 0;
+      const restore = () => {
+        if (cancelled) return;
+        const el = document.querySelector(target);
+        if (el) lenis.scrollTo(el, { offset: -96, immediate: true, force: true });
+        if (++tries < 12) setTimeout(restore, 70);
+      };
+      requestAnimationFrame(restore);
+    }
+
     return () => {
+      cancelled = true;
       gsap.ticker.remove(tick);
       lenis.destroy();
       delete window.__lenis;

@@ -4,10 +4,10 @@ import { Mail, ArrowUp } from "lucide-react";
 import { Linkedin, Behance, Github, Instagram } from "./BrandIcons";
 
 const SOCIALS = [
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Behance, label: "Behance", href: "#" },
-  { icon: Github, label: "GitHub", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/zohair-ahmed-62b525190/" },
+  { icon: Behance, label: "Behance", href: "https://www.behance.net/zohairahmed6" },
+  { icon: Github, label: "GitHub", href: "https://github.com/" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/zohair.thedeveloper/reels/" },
   { icon: Mail, label: "Email", href: "mailto:zohairahmed17@gmail.com" },
 ];
 
@@ -41,6 +41,8 @@ export default function Footer() {
                 key={label}
                 href={href}
                 aria-label={label}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-300 transition-all hover:-translate-y-1 hover:border-white/40 hover:text-white"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.75} />

@@ -6,17 +6,21 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   SiNextdotjs,
   SiReact,
+  SiFlutter,
   SiGreensock,
   SiThreedotjs,
   SiFramer,
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
 import TiltCard from "./TiltCard";
 
 const SKILLS = [
   { name: "Next.js", icon: SiNextdotjs, color: "#ffffff", glow: "rgba(255,255,255,0.35)" },
   { name: "React", icon: SiReact, color: "#61DAFB", glow: "rgba(56,189,248,0.4)" },
+  { name: "Flutter", icon: SiFlutter, color: "#02569B", glow: "rgba(2,86,155,0.45)" },
+  { name: "SharePoint", icon: FaMicrosoft, color: "#036C70", glow: "rgba(3,108,112,0.45)" },
   { name: "GSAP", icon: SiGreensock, color: "#88CE02", glow: "rgba(132,204,22,0.4)" },
   { name: "Three.js", icon: SiThreedotjs, color: "#ffffff", glow: "rgba(148,163,184,0.4)" },
   { name: "Framer Motion", icon: SiFramer, color: "#E64FFF", glow: "rgba(236,72,153,0.4)" },
