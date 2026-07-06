@@ -57,7 +57,7 @@ export default function Testimonials() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#050505] px-6 py-28"
+      className="relative w-full overflow-hidden bg-transparent px-6 py-28"
     >
       <div className="pointer-events-none absolute -top-20 right-1/4 h-[26rem] w-[26rem] rounded-full bg-fuchsia-600/10 blur-[130px]" />
 

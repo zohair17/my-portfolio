@@ -50,7 +50,7 @@ export default function SkillsSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#070707] px-6 py-28"
+      className="relative w-full overflow-hidden bg-transparent px-6 py-28"
     >
       <div className="pointer-events-none absolute bottom-0 right-0 h-[30rem] w-[30rem] rounded-full bg-sky-500/10 blur-[130px]" />
 

@@ -59,7 +59,7 @@ export default function ProcessSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-[#050505]">
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-transparent">
       {/* ambient colour shades so the section isn't pure black — echoes the
           per-stage glow palette (sky / violet / lime / pink). Fixed to the
           section so they stay put while the panels scroll horizontally. */}

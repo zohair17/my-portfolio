@@ -61,7 +61,7 @@ export default function PhilosophySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#050505] px-6 py-28"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-transparent px-6 py-28"
     >
       {/* soft ambient lighting */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[120px]" />

@@ -11,6 +11,12 @@ export default function SmoothScroll({ children }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Take over scroll restoration so a plain refresh always starts at the
+    // hero instead of the browser dumping you back mid-page.
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     const lenis = new Lenis({
       duration: 1.1,
       smoothWheel: true,
@@ -24,30 +30,41 @@ export default function SmoothScroll({ children }) {
     // Expose so sections (e.g. footer scroll-to-top) can drive it.
     window.__lenis = lenis;
 
-    // Honour an initial #hash (e.g. returning from a project via "Back" to
-    // /#project-<slug>). Lenis starts at the top and lazy-loaded images above
-    // the target keep shifting layout, so a single scrollTo either fires too
-    // early or gets overridden back to the hero. Re-apply it until it sticks,
-    // and bail the moment the user takes over.
+    // On load, only ONE hash should scroll us away from the hero: the
+    // /#project-<slug> anchor used when returning from a gallery via "Back".
+    // Every other case — a fresh load, a refresh, or a stray in-page hash left
+    // in the URL by clicking "View Work" (#work), "#about", etc. — must start
+    // at the hero. Lenis + lazy images can override a single scroll, so we
+    // re-apply the target until it sticks and bail once the user takes over.
     let cancelled = false;
-    if (window.location.hash) {
-      const target = window.location.hash;
-      const stop = () => {
-        cancelled = true;
-      };
-      window.addEventListener("wheel", stop, { once: true, passive: true });
-      window.addEventListener("touchstart", stop, { once: true, passive: true });
-      window.addEventListener("keydown", stop, { once: true });
+    const stop = () => {
+      cancelled = true;
+    };
+    window.addEventListener("wheel", stop, { once: true, passive: true });
+    window.addEventListener("touchstart", stop, { once: true, passive: true });
+    window.addEventListener("keydown", stop, { once: true });
 
-      let tries = 0;
-      const restore = () => {
-        if (cancelled) return;
-        const el = document.querySelector(target);
-        if (el) lenis.scrollTo(el, { offset: -96, immediate: true, force: true });
-        if (++tries < 12) setTimeout(restore, 70);
-      };
-      requestAnimationFrame(restore);
+    const hash = window.location.hash;
+    const isProjectReturn = hash.startsWith("#project-");
+
+    // Strip a stray in-page hash so the browser can't jump to it on reload.
+    if (hash && !isProjectReturn) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
+
+    let tries = 0;
+    const settle = () => {
+      if (cancelled) return;
+      if (isProjectReturn) {
+        const el = document.querySelector(hash);
+        if (el) lenis.scrollTo(el, { offset: -96, immediate: true, force: true });
+      } else {
+        lenis.scrollTo(0, { immediate: true, force: true });
+        window.scrollTo(0, 0);
+      }
+      if (++tries < 12) setTimeout(settle, 70);
+    };
+    requestAnimationFrame(settle);
 
     return () => {
       cancelled = true;

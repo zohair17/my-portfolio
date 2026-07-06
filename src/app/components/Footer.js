@@ -21,7 +21,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative w-full overflow-hidden bg-black px-6 pb-12 pt-20">
+    <footer className="relative w-full overflow-hidden bg-transparent px-6 pb-12 pt-20">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col items-center gap-10 text-center">
           {/* logo */}

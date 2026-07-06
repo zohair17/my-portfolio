@@ -214,7 +214,7 @@ function ProjectCard({ project, index }) {
 
 export default function FeaturedProjects() {
   return (
-    <section id="work" className="w-full bg-[#050505] px-4 pb-32 sm:px-6">
+    <section id="work" className="w-full bg-transparent px-4 pb-32 sm:px-6">
       <div className="mx-auto max-w-6xl pt-28">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
           Selected Work

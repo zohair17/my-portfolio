@@ -40,7 +40,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden bg-[#070707] px-6 py-28"
+      className="relative w-full overflow-hidden bg-transparent px-6 py-28"
     >
       <motion.div
         aria-hidden

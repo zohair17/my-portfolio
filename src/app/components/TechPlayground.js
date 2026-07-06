@@ -66,7 +66,7 @@ export default function TechPlayground() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-black px-6"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-transparent px-6"
     >
       {/* cinematic background video — plays through once and then holds on
           its final frame (no loop). */}

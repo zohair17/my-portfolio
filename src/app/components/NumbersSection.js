@@ -47,7 +47,7 @@ export default function NumbersSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden border-y border-white/5 bg-[#080808] px-6 py-24"
+      className="relative w-full overflow-hidden border-y border-white/5 bg-transparent px-6 py-24"
     >
       <div className="mx-auto max-w-6xl">
         <div className="num-grid grid grid-cols-2 gap-6 lg:grid-cols-4">

@@ -56,7 +56,7 @@ export default function BehindScenes() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full overflow-hidden bg-[#070707] px-6 py-28"
+      className="relative w-full overflow-hidden bg-transparent px-6 py-28"
     >
       <div className="pointer-events-none absolute left-0 top-1/3 h-[28rem] w-[28rem] rounded-full bg-violet-600/10 blur-[130px]" />
 
