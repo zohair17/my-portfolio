@@ -3,8 +3,6 @@
 
 # Problem
 
-1) 
-
+-
 # Update
-1) if the Featured backgorund card co
-
+- I want to deploy this portfolio on vercel

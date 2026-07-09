@@ -11,7 +11,7 @@ export default function CaseStudy({ data, slug }) {
   const { role, timeline, overview, sections } = caseStudy;
 
   return (
-    <main className="w-full bg-[#050505]">
+    <main className="relative z-10 w-full bg-transparent">
       <Link
         href="/#work"
         className="fixed left-5 top-5 z-50 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/10"

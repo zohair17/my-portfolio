@@ -45,18 +45,25 @@ export default function SmoothScroll({ children }) {
     window.addEventListener("keydown", stop, { once: true });
 
     const hash = window.location.hash;
-    const isProjectReturn = hash.startsWith("#project-");
+    // Anchors we restore to when arriving from another page via a "Back" button:
+    // project galleries (/#project-<slug>), the Featured section (/#featured, from
+    // the /work page) and the Production section (/#production). Everything else —
+    // a refresh, a stray #work/#about — starts at the hero.
+    const restoreTarget = /^#(project-|production|featured)/.test(hash)
+      ? hash
+      : null;
 
-    // Strip a stray in-page hash so the browser can't jump to it on reload.
-    if (hash && !isProjectReturn) {
+    // Strip the hash from the URL either way, so a later reload always starts at
+    // the hero instead of jumping back to a section.
+    if (hash) {
       window.history.replaceState(null, "", window.location.pathname + window.location.search);
     }
 
     let tries = 0;
     const settle = () => {
       if (cancelled) return;
-      if (isProjectReturn) {
-        const el = document.querySelector(hash);
+      if (restoreTarget) {
+        const el = document.querySelector(restoreTarget);
         if (el) lenis.scrollTo(el, { offset: -96, immediate: true, force: true });
       } else {
         lenis.scrollTo(0, { immediate: true, force: true });

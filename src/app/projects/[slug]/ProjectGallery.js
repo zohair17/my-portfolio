@@ -24,7 +24,7 @@ export default function ProjectGallery({ data, slug }) {
   const { name, tagline, summary, video, hero, original, shots } = data;
 
   return (
-    <main className="w-full bg-[#050505]">
+    <main className="relative z-10 w-full bg-transparent">
       {/* back */}
       <Link
         href={slug ? `/#project-${slug}` : "/#work"}

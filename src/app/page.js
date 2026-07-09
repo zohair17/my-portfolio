@@ -1,11 +1,11 @@
 import SmoothScroll from "./components/SmoothScroll";
 import Loader from "./components/Loader";
-import AuroraBackground from "./components/AuroraBackground";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import PhilosophySection from "./components/PhilosophySection";
 import SkillsSection from "./components/SkillsSection";
 import FeaturedProjects from "./components/FeaturedProjects";
+import ProductionProjects from "./components/ProductionProjects";
 import BehindScenes from "./components/BehindScenes";
 import ProcessSection from "./components/ProcessSection";
 import Testimonials from "./components/Testimonials";
@@ -17,20 +17,13 @@ export default function Home() {
   return (
     <SmoothScroll>
       <Loader />
-      <main className="relative bg-[#070707]">
-        {/* Colourful flowing aurora — a fixed backdrop behind every section
-            from About down to the Footer. The hero sits opaque on top and hides
-            it, so the wave only appears once you scroll past the hero. */}
-        <div className="pointer-events-none fixed inset-0 z-0">
-          <AuroraBackground className="absolute inset-0 h-full w-full opacity-70 [filter:blur(30px)]" />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
+      <main className="relative z-10 bg-transparent">
         <HeroSection />
         <AboutSection />
         <PhilosophySection />
         <SkillsSection />
         <FeaturedProjects />
+        {/* <ProductionProjects /> */}
         <BehindScenes />
         <ProcessSection />
         <Testimonials />

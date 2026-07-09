@@ -4,42 +4,8 @@ import { useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import gsap from "gsap";
-import { Images, FileText } from "lucide-react";
-
-const PROJECTS = [
-  {
-    title: "Dari Mooch",
-    slug: "darimooch",
-    desc: "A men's grooming and beard-care brand, revamped with a bold, masculine storefront and cinematic product storytelling.",
-    stack: ["Next.js", "GSAP", "Shopify", "Tailwind"],
-    tint: "from-amber-600/25 to-orange-700/15",
-    screen: "url('/asset/Darimooch/hero%20section.png')",
-  },
-  {
-    title: "TCS",
-    slug: "tcs",
-    desc: "Pakistan's largest courier network, reimagined with a cleaner, tracking-first experience and a modern, trustworthy interface.",
-    stack: ["Next.js", "React", "GSAP", "Tailwind"],
-    tint: "from-sky-500/25 to-emerald-500/15",
-    screen: "url('/asset/TCS/hero.png')",
-  },
-  {
-    title: "Elyscents",
-    slug: "elyscents",
-    desc: "A premium fragrance house redesigned around atmosphere, scent storytelling and an elegant shopping experience.",
-    stack: ["Next.js", "Framer Motion", "Shopify", "Tailwind"],
-    tint: "from-fuchsia-600/25 to-rose-500/15",
-    screen: "url('/asset/Elyscents/hero%20section.png')",
-  },
-  {
-    title: "Shilajit Energy Drink",
-    slug: "shilajit",
-    desc: "An energy drink crafted with Shilajit and Zamzam water, presented through a bold, high-energy brand experience.",
-    stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
-    tint: "from-emerald-600/25 to-lime-500/15",
-    screen: "url('/asset/Shilajeet/Hero%20section.png')",
-  },
-];
+import { Images, FileText, ArrowRight } from "lucide-react";
+import { FEATURED_PROJECTS, HOME_COUNT } from "../work/data";
 
 function LaptopMockup({ screen, screenRef }) {
   return (
@@ -145,7 +111,7 @@ function ProjectCard({ project, index }) {
       className="sticky scroll-mt-24"
       style={{ top: `${96 + index * 26}px` }}
     >
-      <div className="relative mb-8 overflow-hidden rounded-3xl border border-white/10 bg-[#0b0b0d] shadow-[0_30px_90px_rgba(0,0,0,0.55)]">
+      <div className="relative mb-8 overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_30px_90px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
         <div
           className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${project.tint}`}
         />
@@ -213,8 +179,15 @@ function ProjectCard({ project, index }) {
 }
 
 export default function FeaturedProjects() {
+  const shown = FEATURED_PROJECTS.slice(0, HOME_COUNT);
+  const hasMore = FEATURED_PROJECTS.length > HOME_COUNT;
+
   return (
-    <section id="work" className="w-full bg-transparent px-4 pb-32 sm:px-6">
+    <section id="work" className="relative w-full bg-transparent px-4 pb-32 sm:px-6">
+      {/* Anchor used by the /work "Back" button (kept separate from #work so a
+          plain reload still starts at the hero). */}
+      <span id="featured" aria-hidden className="pointer-events-none absolute -top-24" />
+
       <div className="mx-auto max-w-6xl pt-28">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
           Selected Work
@@ -226,9 +199,20 @@ export default function FeaturedProjects() {
 
       {/* Sticky stacking cards */}
       <div className="mx-auto mt-16 max-w-5xl">
-        {PROJECTS.map((project, index) => (
+        {shown.map((project, index) => (
           <ProjectCard key={project.title} project={project} index={index} />
         ))}
+      </div>
+
+      {/* Route to the full list of projects (handles "more than HOME_COUNT"). */}
+      <div className="mt-16 flex justify-center">
+        <Link
+          href="/work"
+          className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white hover:text-black"
+        >
+          {hasMore ? "View More Projects" : "View All Projects"}
+          <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
+        </Link>
       </div>
     </section>
   );

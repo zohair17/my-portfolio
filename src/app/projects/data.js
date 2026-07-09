@@ -103,6 +103,7 @@ export const PROJECTS = {
     tagline: "Beverage · Website Revamp",
     summary:
       "A revamp of Shilajit Energy Drink — a functional drink made with Shilajit and Zamzam water — presented through a bold, high-energy brand experience.",
+    video: "/asset/Shilajeet/shilajeet.mp4",
     hero: "/asset/Shilajeet/Hero%20section.png",
     original: "https://shilajitenergydrinks.com/",
     caseStudy: {
