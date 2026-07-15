@@ -10,8 +10,12 @@ const LINKS = [
   { icon: Mail, label: "Email", href: "mailto:zohairahmed17@gmail.com" },
   { icon: Behance, label: "Behance", href: "https://www.behance.net/zohairahmed6" },
   { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/zohair.thedeveloper/reels/" },
-  { icon: FileText, label: "Resume", href: "#" },
+  { icon: FileText, label: "Resume", href: "/Zohair_Ahmed_Resume.pdf" },
 ];
+
+// External links and the resume PDF open in their own tab so the portfolio
+// isn't navigated away from; mailto: stays in place.
+const opensNewTab = (href) => href.startsWith("http") || href.endsWith(".pdf");
 
 export default function TechPlayground() {
   const canvasRef = useRef(null);
@@ -72,7 +76,7 @@ export default function TechPlayground() {
           its final frame (no loop). */}
       <video
         className="absolute inset-0 h-full w-full object-cover opacity-40"
-        src="/asset/portfolio.mp4"
+        src="/asset/contact.mp4"
         autoPlay
         muted
         playsInline
@@ -115,8 +119,8 @@ export default function TechPlayground() {
             <a
               key={label}
               href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              target={opensNewTab(href) ? "_blank" : undefined}
+              rel={opensNewTab(href) ? "noopener noreferrer" : undefined}
               className="group flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-md transition-all hover:border-white/40 hover:bg-white/10"
             >
               <Icon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5" strokeWidth={1.75} />

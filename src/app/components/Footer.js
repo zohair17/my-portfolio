@@ -1,15 +1,6 @@
 "use client";
 
-import { Mail, ArrowUp } from "lucide-react";
-import { Linkedin, Behance, Github, Instagram } from "./BrandIcons";
-
-const SOCIALS = [
-  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/zohair-ahmed-62b525190/" },
-  { icon: Behance, label: "Behance", href: "https://www.behance.net/zohairahmed6" },
-  { icon: Github, label: "GitHub", href: "https://github.com/" },
-  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/zohair.thedeveloper/reels/" },
-  { icon: Mail, label: "Email", href: "mailto:zohairahmed17@gmail.com" },
-];
+import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
   const toTop = () => {
@@ -32,22 +23,6 @@ export default function Footer() {
             <span className="text-lg font-semibold tracking-tight text-white">
               Zohair Ahmed
             </span>
-          </div>
-
-          {/* socials */}
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {SOCIALS.map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-300 transition-all hover:-translate-y-1 hover:border-white/40 hover:text-white"
-              >
-                <Icon className="h-4 w-4" strokeWidth={1.75} />
-              </a>
-            ))}
           </div>
 
           {/* divider */}

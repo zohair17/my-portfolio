@@ -29,7 +29,7 @@ export default function Home() {
         <Testimonials />
         <NumbersSection />
         <TechPlayground />
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </SmoothScroll>
   );

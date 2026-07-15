@@ -5,4 +5,4 @@
 
 -
 # Update
-- I want to deploy this portfolio on vercel
+- "Zohair_Ahmed_Resume.pdf" use this document when user click on resume

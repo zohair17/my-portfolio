@@ -6,8 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FolderCheck, Wand2, Smile, GraduationCap } from "lucide-react";
 
 const STATS = [
-  { icon: FolderCheck, value: 48, suffix: "+", label: "Projects Delivered", glow: "rgba(56,189,248,0.4)" },
-  { icon: Wand2, value: 320, suffix: "+", label: "Animations Built", glow: "rgba(168,85,247,0.4)" },
+  { icon: FolderCheck, value: 12, suffix: "+", label: "Projects Delivered", glow: "rgba(56,189,248,0.4)" },
+  { icon: Wand2, value: 120, suffix: "+", label: "Animations Built", glow: "rgba(168,85,247,0.4)" },
   { icon: Smile, value: 99, suffix: "%", label: "Client Satisfaction", glow: "rgba(132,204,22,0.4)" },
   { icon: GraduationCap, value: 5, suffix: "+", label: "Years of Learning", glow: "rgba(244,114,182,0.4)" },
 ];

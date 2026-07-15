@@ -74,6 +74,8 @@ export default function Loader() {
       .add(() => {
         document.body.style.overflow = "";
         setDone(true);
+        // Cue the hero to start its video now that the black overlay is gone.
+        window.dispatchEvent(new Event("loader:done"));
       });
 
     return () => {
