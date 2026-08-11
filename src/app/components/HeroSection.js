@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 // Marginalia framing the hero — each entry is pinned to an edge so the empty
@@ -15,7 +15,8 @@ const HUD = [
   { text: "©2026 — Portfolio", className: "left-6 top-14 sm:left-10 sm:top-16" },
   {
     text: "React · Flutter · SPFx",
-    className: "right-6 top-14 sm:right-10 sm:top-16",
+    // Would run into the ©-line on a phone, so it only appears from sm up.
+    className: "right-6 top-14 hidden sm:right-10 sm:top-16 sm:block",
   },
   {
     text: "4+ Years — Fintech & Enterprise",
@@ -29,13 +30,15 @@ const HUD = [
 ];
 
 export default function HeroSection() {
+  const videoRef = useRef(null);
   const [started, setStarted] = useState(false);
 
-  // Hold the reveal until the loader has cleared, so the name lands on screen
-  // rather than animating away behind the black overlay. The timer is a
-  // fallback for the case where the loader never reports in.
+  // Playback is held back until the loader has cleared, otherwise the footage
+  // runs through behind the black overlay and the reveal fires unseen. The
+  // timer is a fallback for the case where the loader never reports in; if
+  // playback itself is refused, reveal the copy rather than stranding it.
   useEffect(() => {
-    const start = () => setStarted(true);
+    const start = () => videoRef.current?.play().catch(() => setStarted(true));
     window.addEventListener("loader:done", start);
     const fallback = setTimeout(start, 3500);
     return () => {
@@ -55,14 +58,31 @@ export default function HeroSection() {
   return (
     <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-transparent px-6">
       {/* Ambient glow — the same soft-light language the other sections use. */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[40rem] w-[62rem] max-w-[95vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/15 blur-[140px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[40rem] w-[62rem] max-w-[95vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/15 blur-[140px]" />
+
+      {/* Phones get the footage edge-to-edge — a contained 16:9 clip on a
+          portrait screen collapses to a small letterboxed strip. From sm up it
+          is centred and uncropped, capped at the clip's native 1280x720 so a
+          large display never upscales it into softness. */}
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <video
+          ref={videoRef}
+          src="/asset/heroVideo.webm"
+          muted
+          playsInline
+          preload="auto"
+          onEnded={() => setStarted(true)}
+          onError={() => setStarted(true)}
+          className="h-full w-full object-cover object-center sm:h-auto sm:w-auto sm:max-h-[min(80vh,720px)] sm:max-w-[min(90vw,1280px)] sm:object-contain"
+        />
+      </div>
 
       <motion.div
         aria-hidden
         initial={{ opacity: 0 }}
         animate={{ opacity: started ? 1 : 0 }}
         transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-        className="pointer-events-none absolute inset-0 z-20 select-none font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 sm:text-xs"
+        className="pointer-events-none absolute inset-0 z-30 select-none font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 sm:text-xs"
       >
         {HUD.map(({ text, className }) => (
           <span key={text} className={`absolute ${className}`}>
@@ -77,12 +97,12 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: started ? 1 : 0 }}
         transition={{ duration: 1, delay: 0.7, ease: "easeOut" }}
-        className="absolute right-6 top-6 z-20 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 transition-colors hover:text-white sm:right-10 sm:top-8 sm:text-xs"
+        className="absolute right-6 top-6 z-30 font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500 transition-colors hover:text-white sm:right-10 sm:top-8 sm:text-xs"
       >
         Contact
       </motion.a>
 
-      <h1 className="relative z-10 select-none text-center font-semibold uppercase leading-[0.82] tracking-tight">
+      <h1 className="relative z-20 select-none text-center font-semibold uppercase leading-[0.82] tracking-tight">
         <motion.span
           {...reveal(0.15)}
           className="block text-[clamp(3.5rem,15vw,15rem)] text-white"

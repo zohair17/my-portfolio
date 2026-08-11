@@ -5,4 +5,5 @@
 
 -
 # Update
-- "Zohair_Ahmed_Resume.pdf" use this document when user click on resume
+- make the hero section responsive for all the mobile and big screens.
+- the video in mobile screen looks so small, the video height will have no margin from top and bottom
