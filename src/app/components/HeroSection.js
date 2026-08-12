@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 // Marginalia framing the hero — each entry is pinned to an edge so the empty
@@ -30,15 +30,13 @@ const HUD = [
 ];
 
 export default function HeroSection() {
-  const videoRef = useRef(null);
   const [started, setStarted] = useState(false);
 
-  // Playback is held back until the loader has cleared, otherwise the footage
-  // runs through behind the black overlay and the reveal fires unseen. The
-  // timer is a fallback for the case where the loader never reports in; if
-  // playback itself is refused, reveal the copy rather than stranding it.
+  // Hold the reveal until the loader has cleared, so the name lands on screen
+  // rather than animating away behind the black overlay. The timer is a
+  // fallback for the case where the loader never reports in.
   useEffect(() => {
-    const start = () => videoRef.current?.play().catch(() => setStarted(true));
+    const start = () => setStarted(true);
     window.addEventListener("loader:done", start);
     const fallback = setTimeout(start, 3500);
     return () => {
@@ -59,23 +57,6 @@ export default function HeroSection() {
     <section className="relative flex h-screen w-full items-center justify-center overflow-hidden bg-transparent px-6">
       {/* Ambient glow — the same soft-light language the other sections use. */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 z-0 h-[40rem] w-[62rem] max-w-[95vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/15 blur-[140px]" />
-
-      {/* Phones get the footage edge-to-edge — a contained 16:9 clip on a
-          portrait screen collapses to a small letterboxed strip. From sm up it
-          is centred and uncropped, capped at the clip's native 1280x720 so a
-          large display never upscales it into softness. */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
-        <video
-          ref={videoRef}
-          src="/asset/heroVideo.webm"
-          muted
-          playsInline
-          preload="auto"
-          onEnded={() => setStarted(true)}
-          onError={() => setStarted(true)}
-          className="h-full w-full object-cover object-center sm:h-auto sm:w-auto sm:max-h-[min(80vh,720px)] sm:max-w-[min(90vw,1280px)] sm:object-contain"
-        />
-      </div>
 
       <motion.div
         aria-hidden

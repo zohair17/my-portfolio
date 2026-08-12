@@ -1,4 +1,4 @@
-import WorkListing from "../components/WorkListing";
+import ProjectsShowcase from "../components/ProjectsShowcase";
 
 export const metadata = {
   title: "All Projects — Zohair Ahmed",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function WorkPage() {
-  return <WorkListing />;
+  return <ProjectsShowcase />;
 }

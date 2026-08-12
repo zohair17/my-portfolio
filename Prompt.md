@@ -1,9 +1,3 @@
-# Create
 
-
-# Problem
-
--
 # Update
-- make the hero section responsive for all the mobile and big screens.
-- the video in mobile screen looks so small, the video height will have no margin from top and bottom
+- "https://www.s0animation.com/design" is link ko khol kar bta sktay ho tm kai ismai kia animation hai ksi trha sai hai??<!--  -->

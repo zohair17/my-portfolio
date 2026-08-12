@@ -127,4 +127,141 @@ export const PROJECTS = {
       { src: "/asset/Shilajeet/Screenshot%202026-07-05%20200426.png", title: "Footer", body: "The footer organises everything into three tidy columns. Quick Links covers Home, Shop, Pre-Workout Supplements, Products, Members, Contact, Wholesale and Our Distributor; Connectivity shows the accepted payment methods (Apple Pay, Amex, Diners, Discover, GPay, JCB, Mastercard, PayPal, Stripe, Visa); and Support carries the phone number, Privacy Policy and Terms & Conditions — a clean, well-structured close to the experience." },
     ],
   },
+
+  nike: {
+    name: "Nike — Air Jordan",
+    tagline: "Footwear · Interactive Showcase",
+    summary:
+      "An interactive Air Jordan landing concept — a single hero sneaker staged like a gallery piece, with motion-driven feature reveals and bold editorial typography.",
+    video: "/asset/Nike/video.mp4",
+    hero: "/asset/Nike/hero.png",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "A self-initiated showcase built around the Air Jordan silhouette. The goal was a product landing page that feels like a premium sneaker drop — one hero product, confident type and motion that keeps attention on the shoe.",
+      sections: [
+        { title: "The Idea", body: "Rather than a busy store, the page centres a single floating sneaker on a lit pedestal with a carousel to move through the range. Everything — colour, type, motion — is tuned to make the product the hero." },
+        { title: "The Build", body: "A bold “Wear Your Style With Comfort” hero leads into a motion-led “Quality Matters” section where descriptive tags orbit the shoe along the swoosh, followed by an editorial product-detail block with heritage framing, price and a clear buy action." },
+        { title: "The Result", body: "The showcase reads as a polished, high-end sneaker experience — flagship silhouettes presented as one continuous, interactive story that stays focused on the product from hero to footer." },
+      ],
+    },
+    shots: [
+      { src: "/asset/Nike/hero.png", title: "Hero — Wear Your Style With Comfort", body: "The landing hero floats an Air Jordan 1 over a lit pedestal against a deep maroon backdrop, with an oversized headline on the left and a carousel to cycle through the range. A traced swoosh sits behind the shoe, and “Scroll for more details” invites the walkthrough below." },
+      { src: "/asset/Nike/qualitu.png", title: "Quality Matters — Feature Orbit", body: "The shoe re-appears on the left while descriptive pills — Iconic, Versatile, Premium, Timeless, Comfortable — float along a swoosh-shaped path across the screen. A “Quality Matters” statement and supporting copy on the right frame the craftsmanship story." },
+      { src: "/asset/Nike/shoes%20info.png", title: "Air Jordan Sneakers — Product Detail", body: "An editorial product block pairs a large “Air Jordan Sneakers” heading and a “Heritage · 1985” tag with a short product description, a Buy Now button and a “Starting at $219” price, the sneaker angled dynamically to the right." },
+      { src: "/asset/Nike/footer.png", title: "Footer — Interactive Showcase", body: "A clean dark footer organises Shop, Help and Company links into columns, with a short note that the page presents six flagship silhouettes as a single interactive showcase and the copyright line beneath." },
+    ],
+  },
+
+  pia: {
+    name: "PIA — Pakistan International Airlines",
+    tagline: "Airline · Website Revamp",
+    summary:
+      "A concept revamp of Pakistan International Airlines built around a booking-first experience — flight search up front, clear cabin classes, a modern fleet showcase and a global route map.",
+    video: "/asset/PIA/Screen%20Recording%202026-08-11%20140016.mp4",
+    hero: "/asset/PIA/Hero.png",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept revamp",
+      overview:
+        "A reimagining of the PIA experience with a calm, premium interface in the airline’s green-and-gold identity. The focus was to make booking effortless while showcasing cabins, fleet, destinations and offers with confidence.",
+      sections: [
+        { title: "The Challenge", body: "National-carrier sites tend to bury the primary action — searching a flight — under dense navigation. The revamp needed to lead with booking while still presenting the airline’s breadth: cabins, fleet, routes and fares." },
+        { title: "The Approach", body: "A full-bleed cabin hero carries a prominent Round Trip / One Way / Multi City search panel. Below it, cabin classes, a modern fleet carousel with real specs, a special-offers slider and an animated global route map each get a focused, scannable section in a consistent design system." },
+        { title: "The Outcome", body: "The result feels modern and trustworthy — international quality with a Pakistani heart — with the fastest route to booking front and centre and the rest of the airline’s story presented cleanly around it." },
+      ],
+    },
+    shots: [
+      { src: "/asset/PIA/Hero.png", title: "Hero — Find Your Perfect Flight", body: "A cabin-interior hero frames a large flight-search panel with Round Trip / One Way / Multi City tabs, From/To (KHI → DXB), dates, passengers and class, plus a green Search Flights button. Trust markers — Best Fare Guarantee, Flexible Booking, Trusted Airline, Secure Payment — sit beneath." },
+      { src: "/asset/PIA/Cabin%20Class.png", title: "Cabin Class — Choose How You Fly", body: "Three cabin cards — Economy, Economy Plus and Business — each list their perks (seating, entertainment, meals, baggage) with an Explore action, over a softly blurred cabin backdrop and a supporting service-promise bar." },
+      { src: "/asset/PIA/fleet.png", title: "Fleet — Modern Fleet, Global Standards", body: "A carousel of aircraft cards — Boeing 777-300ER, 777-200LR, Airbus A320-200 — each showing capacity, range and cruise speed with a short description and a View Details link, headed by a “Modern Fleet. Global Standards.” title." },
+      { src: "/asset/PIA/offers.png", title: "Offers — Fly More, Save More", body: "A special-offers carousel centres a Dubai fare card with a 30% OFF badge, discounted price and Book Now, flanked by blurred neighbouring destinations, over a green-and-gold PIA tailfin. A benefits bar (Best Fares, Extra Baggage, Flexible Options, Secure Booking) anchors the section." },
+      { src: "/asset/PIA/location.png", title: "Destinations — Global Route Map", body: "An animated world map plots PIA’s network with golden arcs radiating from Pakistan to destinations across Asia, the Middle East, Europe, Africa and North America, each marked with a labelled pin." },
+      { src: "/asset/PIA/Contact.png", title: "Contact — Let’s Get You Airborne", body: "A split contact section pairs call, email, head-office and ticketing-hours cards on the left with a “Send us a message” form (name, email, subject, message) on the right, over an aircraft backdrop." },
+      { src: "/asset/PIA/footer.png", title: "Footer", body: "A dark green footer organises Explore, Support, Airline and Contact columns alongside a “Fare alerts” newsletter signup and social links, closing with the “Connecting Pakistan with the world since 1946” line." },
+    ],
+  },
+
+  "samurae-punk": {
+    name: "Samurae Punk",
+    tagline: "Game · Landing Page",
+    summary:
+      "A cinematic landing page for a fictional open-world action-RPG — a neon-samurai world rendered in a bold red-on-black identity, with feature reveals, dispatches and a strong call to play.",
+    video: "/asset/Samurae%20punk/Screen%20Recording%202026-08-11%20173941.mp4",
+    hero: "/asset/Samurae%20punk/hero.png",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "A concept marketing site for “Samurae Punk”, a cyberpunk-samurai action-RPG. The brief was pure atmosphere — a landing page that sells a world and a mood as much as a game, and pushes players toward Play Now.",
+      sections: [
+        { title: "The Idea", body: "Set in a dying neon megacity where feudal honour meets machine-age chaos, the site had to feel like a AAA game portal — dramatic character art, glitch typography and a relentless red-on-black palette." },
+        { title: "The Build", body: "A full-bleed character hero opens with the tagline and platform badges, flowing into a numbered “Forged in Steel & Code” feature grid, a “From the Dojo” news wall (patch notes, lore, tournaments) and a final “Enter the Iron Age” call to action." },
+        { title: "The Result", body: "The page reads as a confident, immersive game landing — every section reinforces the world and funnels attention to Play Now, closing on studio and community links." },
+      ],
+    },
+    shots: [
+      { src: "/asset/Samurae%20punk/hero.png", title: "Hero — Rise as the Last Iron Ronin", body: "A neon-lit samurai stands centre-frame beside the glitch-styled “Samurae Punk” logotype, with a “Season One” tag, a short world pitch and Play Now / Watch Trailer actions. Player rating (4.9) and “2.4M+ active warriors” float on the right." },
+      { src: "/asset/Samurae%20punk/Screenshot%202026-08-11%20173703.png", title: "Core Features — Forged in Steel & Code", body: "A numbered feature grid pairs “Blade Combat Evolved” (a fluid, responsive combat system) with “Open World Neon City” (explore the megacity of Tokkyo), each over moody cityscape imagery with red accent labels." },
+      { src: "/asset/Samurae%20punk/Screenshot%202026-08-11%20173714.png", title: "From the Dojo — Latest Dispatches", body: "A three-up news wall — tagged Patch Notes, Lore and Tournament — surfaces the latest updates with dated cards, character art and Read More links, under a bold “From the Dojo” heading." },
+      { src: "/asset/Samurae%20punk/Screenshot%202026-08-11%20173725.png", title: "Enter the Iron Age", body: "A full-bleed closing hero centres “Enter the Iron Age” over the armoured protagonist, with Play Free Now / Watch Trailer buttons and PC · PlayStation 5 · Xbox Series X availability." },
+      { src: "/asset/Samurae%20punk/Screenshot%202026-08-11%20173733.png", title: "Footer — Iron Ghost Studios", body: "A dark footer organises Game, Community and Company links into columns beside a short description of the title, closing with the studio credit and social icons." },
+    ],
+  },
+
+  highfy: {
+    name: "Highfy",
+    tagline: "Beauty & Cosmetics · E-commerce",
+    summary:
+      "A beauty and cosmetics e-commerce concept — a category-rich storefront with animated product showcases, brand spotlights and a bright, trustworthy shopping experience.",
+    video: "/asset/highfy/video.mp4",
+    hero: "/asset/highfy/hero.png",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "A storefront concept for Highfy, a beauty marketplace carrying thousands of authentic products. The goal was to make a very large catalogue feel curated and friendly, with motion that adds delight without getting in the way of shopping.",
+      sections: [
+        { title: "The Challenge", body: "Beauty platforms juggle huge catalogues across skincare, makeup, haircare and fragrance. The design had to make that breadth navigable while feeling premium and reassuring about authenticity." },
+        { title: "The Approach", body: "A clean purple-accented system leads with search and a full category nav, then flows into a fanned promo carousel, a best-seller row, animated brand spotlights (including a Korean-beauty showcase) and an FAQ, all built to keep browsing effortless." },
+        { title: "The Outcome", body: "The result feels like a trusted, well-organised beauty destination — large and varied, but easy to scan, with authenticity and delivery promises reinforced throughout." },
+      ],
+    },
+    shots: [
+      { src: "/asset/highfy/hero.png", title: "Hero — Pakistan’s Most Trusted Beauty Platform", body: "The storefront opens with a search bar and a full category nav (Skincare, Makeup & Nails, Perfumes, Haircare, Bodycare, Beauty Tools, Personal Care), a “10,000+ authentic products” promo banner and a fanned deck of brand/offer cards below." },
+      { src: "/asset/highfy/best%20seller.png", title: "Best Seller — Customer Favourites", body: "A horizontal row of product cards — hair masks, setting sprays, tools and more — each with authentic badges, discount tags, star ratings, price and Add to Cart, under a “Best Seller” heading." },
+      { src: "/asset/highfy/korean.png", title: "Korean Beauty — Brand Spotlight", body: "A playful radial layout arranges Korean-beauty brands — Beauty of Joseon, numbuzin, AXIS-Y, Anua, Dr.Althea — as tilted discount cards around a central “Korean Beauty” label on a soft pink backdrop." },
+      { src: "/asset/highfy/FAQ.png", title: "FAQ — Good To Know", body: "An accordion of common questions (what Highfy is, how to order, delivery, shipping, returns, authenticity) with an expanded answer styled in the brand’s purple, under a bold “Frequently Asked Questions” heading." },
+      { src: "/asset/highfy/footer.png", title: "Footer", body: "A reassurance bar (Easy Returns, 100% Authentic, Fast Delivery) sits above a multi-column footer — Contact, Policies, Company, Categories, Top 5 Brands and Work With Us — closing with the “Pakistan’s largest beauty destination” line." },
+    ],
+  },
+
+  "boss-leaf": {
+    name: "Boss Leaf",
+    tagline: "Natural Leaf Wraps · Website (18+)",
+    summary:
+      "A dark, premium storefront for Boss Leaf, a natural tobacco leaf-wraps brand — cinematic product staging, a flavour-led shop and a wholesale funnel. Intended for adults 18+.",
+    video: "/asset/boss-leaf/Screen%20Recording%202026-08-11%20180539.mp4",
+    hero: "/asset/boss-leaf/Screenshot%202026-08-11%20180230.png",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "A product-led site for Boss Leaf, a natural leaf-wraps brand. The design leans into cinematic, high-contrast product staging to present the range confidently, with a clear path to shop and a dedicated wholesale/retailer funnel. (Adults 18+.)",
+      sections: [
+        { title: "The Challenge", body: "The brand needed a premium, grown-up presence that showcases a broad flavour range and supports both retail shoppers and wholesale/retailer partners, with age-appropriate framing throughout." },
+        { title: "The Approach", body: "A near-black palette with cinematic red lighting stages each pack like a product shoot. A bold hero and brand-story section lead into flavour-led shop rows, a “Tru Cuts” range and a stats-driven wholesale block with a clear Apply for Wholesale action." },
+        { title: "The Outcome", body: "The result reads as a confident, premium product site — dramatic staging and a clear structure that make the range easy to browse while routing retailers cleanly toward wholesale." },
+      ],
+    },
+    shots: [
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180230.png", title: "Hero — Premium Collection", body: "A dramatic hero stages a “Black Cherry Gelato” pack on a lit pedestal in cinematic red smoke, with a large product title, Explore Now action and an age/legal compliance bar across the bottom." },
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180240.png", title: "Natural Leaf Wraps 7pk", body: "A product spotlight pairs a big “Natural Leaf Wraps 7pk” headline with the featured pack and quick feature badges — 100% Natural Leaf, Slow Burning, Premium Quality — plus Add to Cart and a View More link." },
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180256.png", title: "Who We Are — Better Leaf. Better Smoke.", body: "A brand-story section sets a giant “Better leaf. Better smoke.” statement against copy about hand-picked, hand-cut whole leaf, closed by a scrolling marquee — Hand Cut · Slow Burning · 100% Natural Tobacco Leaf." },
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180318.png", title: "Shop — Flavour Range", body: "A product grid presents flavours — Aromatic, Cookie Dream, Dark XO, Gasconsin Milky White — each staged in its own coloured lighting with price and Add to Cart, over a “View More” call to the full shop." },
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180357.png", title: "Tru Cuts — Hand-Graded Range", body: "A “Tru Cuts” showcase fans four numbered product cards — Aromatic Classic, Original Natural, Dark Diamond, Vanilla Caramel Cream — in warm, smoky lighting with per-card Add to Cart actions." },
+      { src: "/asset/boss-leaf/Screenshot%202026-08-11%20180421.png", title: "The Range & Wholesale", body: "A stats band — 6 collections, 24 flavours, 100% natural leaf, slow burning — sits above a “Put Boss Leaf on your shelf” retailer block with case-pricing perks and an Apply for Wholesale action." },
+    ],
+  },
 };

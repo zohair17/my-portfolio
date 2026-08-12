@@ -36,8 +36,48 @@ export const FEATURED_PROJECTS = [
     tint: "from-emerald-600/25 to-lime-500/15",
     screen: "url('/asset/Shilajeet/Hero%20section.png')",
   },
+  {
+    title: "Nike — Air Jordan",
+    slug: "nike",
+    desc: "An interactive Air Jordan showcase — a sneaker landing concept built around a floating hero product, motion-driven feature reveals and bold editorial type.",
+    stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
+    tint: "from-red-600/25 to-rose-800/15",
+    screen: "url('/asset/Nike/hero.png')",
+  },
+  {
+    title: "PIA",
+    slug: "pia",
+    desc: "A concept revamp of Pakistan International Airlines — a booking-first experience with flight search, cabin classes, a modern fleet and a global route map.",
+    stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
+    tint: "from-emerald-700/25 to-yellow-600/15",
+    screen: "url('/asset/PIA/Hero.png')",
+  },
+  {
+    title: "Samurae Punk",
+    slug: "samurae-punk",
+    desc: "A cinematic landing page for a fictional open-world action-RPG — neon-samurai art direction, feature reveals and a bold red-on-black identity.",
+    stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
+    tint: "from-red-600/25 to-neutral-800/20",
+    screen: "url('/asset/Samurae%20punk/hero.png')",
+  },
+  {
+    title: "Highfy",
+    slug: "highfy",
+    desc: "A beauty & cosmetics e-commerce concept — category-rich navigation, animated product showcases and a bright, trustworthy shopping experience.",
+    stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
+    tint: "from-fuchsia-600/25 to-purple-600/15",
+    screen: "url('/asset/highfy/hero.png')",
+  },
+  {
+    title: "Boss Leaf",
+    slug: "boss-leaf",
+    desc: "A dark, premium site for a natural leaf-wraps brand — cinematic product staging, a flavour-led shop and a wholesale funnel. (18+)",
+    stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
+    tint: "from-red-700/20 to-zinc-800/20",
+    screen: "url('/asset/boss-leaf/Screenshot%202026-08-11%20180230.png')",
+  },
 ];
 
 // How many featured projects roll onto the home sticky stack before the rest
 // are pushed to the "View All Projects" (/work) page.
-export const HOME_COUNT = 4;
+export const HOME_COUNT = 3;

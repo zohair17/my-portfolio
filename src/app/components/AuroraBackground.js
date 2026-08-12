@@ -13,9 +13,17 @@ const RIBBONS = [
   { colors: ["#a855f7", "#ec4899"], y: 0.52, amp: 0.17, thick: 0.24, speed: 0.00020, freq: 0.8, phase: 5.0 },
 ];
 
-export default function AuroraBackground({ className = "" }) {
+export default function AuroraBackground({ className = "", paused = false }) {
   const canvasRef = useRef(null);
   const scrollRef = useRef(0);
+  // Kept in a ref so toggling `paused` never tears down the animation loop —
+  // the loop keeps ticking (cheap) but skips the expensive draw while paused.
+  // Lets many per-panel instances stay mounted with only the on-screen ones
+  // actually rendering.
+  const pausedRef = useRef(paused);
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -41,8 +49,8 @@ export default function AuroraBackground({ className = "" }) {
 
     const draw = (t) => {
       raf = requestAnimationFrame(draw);
-      // Fixed backdrop for the whole page — only pause when the tab is hidden.
-      if (document.hidden) return;
+      // Skip drawing when the tab is hidden or this instance is off-screen.
+      if (document.hidden || pausedRef.current) return;
 
       const scroll = scrollRef.current;
       const scrollAmp = 1 + Math.min(scroll / 900, 1) * 0.9; // waves grow as you scroll
