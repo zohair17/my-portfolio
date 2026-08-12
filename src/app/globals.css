@@ -34,6 +34,16 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+/* Slow metallic drift for the hero's liquid-chrome name overlay. */
+@keyframes chromeFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
 /* Scrollbar tinted with the same indigo → fuchsia shader palette. */
 * {
   scrollbar-width: thin;

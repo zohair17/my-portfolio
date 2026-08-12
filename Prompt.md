@@ -1,3 +1,1 @@
-acha ab jesay kisi project par deep dive kartay hain for example mai gaya view more porjects par gaya waha sai koi projects ko deep dive par click ki phir agar waha sai back press karta hun to kia hota hai kai wo wapsi home par lekar jata hai instead of previous page.. ye behaviour ghalat hai.
-
-dusra ye btao kai animations mobile view ya shorter screens par nahi chalti?? q kai mobile par stack-overlap projects nahi ho rahay .. responsive hai lekin ye scrolling animations work nahi akr rahi..
+nahi dekho bhot ajeeb lag raha hai.. dekho isko hta do .. text jo pehlay tha wesay e kardo baqi "https://www.noth.in/" ye lin dekho iska hero section ami jo hover effect lga hua hai agar wo kar sktay ho to kardo bilkul exact same animation effect wo bhi hero sectio mai iskai ilawa background text ya text color wagera cahnge na akrna plaesa aur 4000 sai ziada token consume mat karna
