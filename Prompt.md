@@ -1,3 +1,3 @@
+acha ab jesay kisi project par deep dive kartay hain for example mai gaya view more porjects par gaya waha sai koi projects ko deep dive par click ki phir agar waha sai back press karta hun to kia hota hai kai wo wapsi home par lekar jata hai instead of previous page.. ye behaviour ghalat hai.
 
-# Update
-- "https://www.s0animation.com/design" is link ko khol kar bta sktay ho tm kai ismai kia animation hai ksi trha sai hai??<!--  -->
+dusra ye btao kai animations mobile view ya shorter screens par nahi chalti?? q kai mobile par stack-overlap projects nahi ho rahay .. responsive hai lekin ye scrolling animations work nahi akr rahi..

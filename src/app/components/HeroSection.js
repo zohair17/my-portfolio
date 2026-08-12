@@ -25,7 +25,10 @@ const HUD = [
   { text: "Karachi — Pakistan", className: "bottom-6 left-6 sm:bottom-8 sm:left-10" },
   {
     text: "Available for Freelance",
-    className: "bottom-6 right-6 sm:bottom-8 sm:right-10",
+    // On phones the two bottom labels sit on the same line and collide, so this
+    // one stacks onto the (mobile-empty) line above, left-aligned; from sm up it
+    // returns to the bottom-right corner.
+    className: "bottom-14 left-6 sm:bottom-8 sm:left-auto sm:right-10",
   },
 ];
 

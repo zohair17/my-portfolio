@@ -2,28 +2,21 @@
 
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import PanelAurora from "./PanelAurora";
 
 // `screen` in the data is a CSS url("…"); pull the bare path out.
 const cleanUrl = (s) =>
   s.replace(/^url\((['"]?)/, "").replace(/(['"]?)\)$/, "");
-
-// Panels must stay opaque so the pin-and-stack scroll never ghosts the panel
-// behind — so the section keeps a solid dark base, and <PanelAurora /> paints
-// the real site aurora on top of it. The net panel is fully opaque but looks
-// identical to the fixed wave background. Shared with the closing panel so the
-// whole showcase reads as one continuous themed surface.
-export const PANEL_BG = { backgroundColor: "#0a0a0a" };
 
 // One "case" panel — CASE label, full screenshot on the left, serif title +
 // hashtags + outlined Deep Dive on the right. Shared by the home Featured
 // section and the /work showcase so both read identically. `sticky` turns on
 // the pin-and-stack scroll (each panel pins, and the next slides up over it).
 //
-// Panels are opaque (bg-[#0a0a0a]) and each gets an increasing z-index so the
-// next one cleanly covers the previous while stacking — no ghosting of the
-// panel behind. The caller layers a higher-z closing panel on top so the last
-// case is covered just as cleanly.
+// The panel *section* is transparent so the one page-wide aurora shows through
+// behind every panel (one continuous background, no per-section seams). Only
+// the inner *card* is opaque, so when the next panel slides up its card cleanly
+// covers the previous card — the stack never ghosts — while the aurora stays
+// visible in the margins around each card.
 export default function CasePanel({ project: p, index, sticky = true }) {
   const router = useRouter();
   const tags = p.stack
@@ -33,23 +26,27 @@ export default function CasePanel({ project: p, index, sticky = true }) {
   return (
     <section
       id={`project-${p.slug}`}
-      style={{ zIndex: index + 1, ...PANEL_BG }}
-      className={`relative flex min-h-screen w-full items-center overflow-hidden px-4 py-20 sm:px-8 ${
-        sticky ? "lg:sticky lg:top-0 lg:h-screen lg:py-0" : ""
+      style={{ zIndex: index + 1 }}
+      className={`relative flex min-h-screen w-full items-center px-3 sm:px-5 lg:px-6 ${
+        sticky ? "sticky top-0 h-screen" : "py-16"
       }`}
     >
-      {/* real site aurora — opaque panel base keeps stacking clean */}
-      <PanelAurora />
+      <div className="relative z-10 mx-auto w-full max-w-[112rem]">
+        {/* opaque card — covers the panel behind while stacking; the aurora
+            shows through the transparent section around it. The Case label lives
+            INSIDE the card so it gets covered too (otherwise the stacked panels'
+            numbers overlap in the margin above the card). */}
+        <div
+          style={{ backgroundColor: "#0b0a13" }}
+          className="overflow-hidden rounded-3xl border border-white/12 bg-gradient-to-b from-white/[0.06] to-white/[0.01] shadow-[0_40px_120px_rgba(0,0,0,0.6)]"
+        >
+          <p className="px-6 pt-6 font-mono text-xs uppercase tracking-[0.4em] text-zinc-300 sm:px-9 sm:pt-8">
+            Case {String(index + 1).padStart(2, "0")}
+          </p>
 
-      <div className="relative z-10 mx-auto w-full max-w-[92rem]">
-        <p className="mb-5 font-mono text-xs uppercase tracking-[0.4em] text-zinc-400">
-          Case {String(index + 1).padStart(2, "0")}
-        </p>
-
-        {/* frosted card */}
-        <div className="grid items-center gap-4 overflow-hidden rounded-3xl border border-white/12 bg-white/[0.05] shadow-[0_40px_120px_rgba(0,0,0,0.55)] backdrop-blur-2xl lg:grid-cols-[1.2fr_0.8fr]">
-          {/* left — full screenshot, nothing cropped */}
-          <div className="flex items-center justify-center p-5 sm:p-8">
+          <div className="grid items-center gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+            {/* left — full screenshot, nothing cropped */}
+            <div className="flex items-center justify-center p-5 sm:p-8">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={cleanUrl(p.screen)}
@@ -61,7 +58,7 @@ export default function CasePanel({ project: p, index, sticky = true }) {
 
           {/* right — serif title · hashtags · outlined Deep Dive */}
           <div className="px-8 pb-12 pt-2 lg:py-12 lg:pl-4 lg:pr-14">
-            <h2 className="font-serif text-5xl font-medium leading-[1.03] tracking-tight text-white sm:text-6xl md:text-7xl">
+            <h2 className="font-serif text-4xl font-medium leading-[1.03] tracking-tight text-white sm:text-6xl md:text-7xl">
               {p.title}
             </h2>
             <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.3em] text-zinc-400">
@@ -82,6 +79,7 @@ export default function CasePanel({ project: p, index, sticky = true }) {
                 strokeWidth={1.75}
               />
             </button>
+          </div>
           </div>
         </div>
       </div>

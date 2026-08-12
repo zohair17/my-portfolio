@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowDown, ExternalLink } from "lucide-react";
 
@@ -22,27 +22,43 @@ function BrowserFrame({ src, alt }) {
 
 export default function ProjectGallery({ data, slug }) {
   const { name, tagline, summary, video, hero, original, shots } = data;
+  const router = useRouter();
+
+  // Go back to wherever the user came from (/work, or the home stack) instead of
+  // always jumping to home. Fall back to the home project anchor on a direct load
+  // (shared link) where there's no in-app history to return to.
+  const handleBack = () => {
+    if (typeof window !== "undefined" && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push(slug ? `/#project-${slug}` : "/#work");
+    }
+  };
 
   return (
     <main className="relative z-10 w-full bg-transparent">
       {/* back */}
-      <Link
-        href={slug ? `/#project-${slug}` : "/#work"}
+      <button
+        onClick={handleBack}
         className="fixed left-5 top-5 z-50 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/10"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={1.75} /> Back
-      </Link>
+      </button>
 
       {/* ── Hero (video only, audio enabled) ── */}
-      <section className="relative flex h-screen w-full items-center justify-center overflow-hidden">
+      {/* Shorter on phones so the full banner (shown via bg-contain) doesn't
+          leave a huge empty screen; full-height + cover from sm up. */}
+      <section className="relative flex h-[60vh] w-full items-center justify-center overflow-hidden sm:h-screen">
         <motion.div
           initial={{ scale: 1.12, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.6, ease }}
           className="absolute inset-0"
         >
+          {/* bg-contain on phones → the whole banner is visible (not cropped);
+              bg-cover from sm up for the full-bleed look on larger screens. */}
           <div
-            className="h-full w-full bg-cover bg-center"
+            className="h-full w-full bg-contain bg-center bg-no-repeat sm:bg-cover"
             style={{ backgroundImage: `url('${hero}')` }}
           />
         </motion.div>

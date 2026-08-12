@@ -1,16 +1,11 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowDown } from "lucide-react";
 import { FEATURED_PROJECTS } from "../work/data";
-import CasePanel, { PANEL_BG } from "./CasePanel";
-import PanelAurora from "./PanelAurora";
-
-// Animated waves backdrop (WebGL) — client-only.
-const WaveBackground = dynamic(() => import("./WaveBackground"), { ssr: false });
+import CasePanel from "./CasePanel";
 
 // Rotating hero headline — web-development focused, cycled in the centre title.
 const DISCIPLINES = [
@@ -44,14 +39,10 @@ export default function ProjectsShowcase() {
   }, []);
 
   return (
-    // bg-transparent → the site-wide aurora theme shows through, unchanged.
+    // bg-transparent → the site-wide aurora backdrop (layout.js) shows through
+    // the whole page, so /work shares the exact same aurora as the home page —
+    // one consistent background everywhere, visible around every transparent panel.
     <main className="relative z-10 w-full bg-transparent text-white">
-      {/* Fixed animated waves behind the whole page (replaces the flat colour). */}
-      <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
-        <WaveBackground className="absolute inset-0 h-full w-full opacity-55 [filter:blur(2px)]" />
-        <div className="absolute inset-0 bg-black/55" />
-      </div>
-
       <Link
         href="/#work"
         className="fixed left-5 top-5 z-50 flex items-center gap-2 rounded-full border border-white/15 bg-black/40 px-4 py-2 text-sm font-medium text-white backdrop-blur-md transition-colors hover:bg-white/10"
@@ -135,29 +126,34 @@ export default function ProjectsShowcase() {
         </motion.a>
       </section>
 
-      {/* ── Stacked "case" panels — each pins, the next slides up over it.
-             All panels are sticky; the closing panel below sits at a higher
-             z-index so it covers the last pinned case cleanly (no ghosting). ── */}
+      {/* ── Stacked "case" panels — transparent sections (the one page-wide
+             aurora shows through behind them all), opaque cards that cover the
+             panel behind while stacking. The closing panel is the final layer. ── */}
       <div id="projects" className="relative z-10">
         {projects.map((p, i) => (
           <CasePanel key={p.slug} project={p} index={i} />
         ))}
 
-        {/* closing panel — opaque + top of the stack, so it slides up over the
-            last case and covers it just like every other panel transition */}
+        {/* closing panel — the last case has no next card to cover it, so this
+            final panel is opaque (a still, dark aurora tint) and sits on top of
+            the stack, sliding up to cover the last case as the send-off */}
         <section
-          style={{ zIndex: projects.length + 1, ...PANEL_BG }}
-          className="relative flex min-h-screen w-full flex-col items-center justify-center gap-6 overflow-hidden px-6 text-center"
+          style={{
+            zIndex: projects.length + 1,
+            backgroundColor: "#0a0a0a",
+            backgroundImage:
+              "radial-gradient(90% 70% at 20% 20%, rgba(124,91,255,0.20), transparent 60%)," +
+              "radial-gradient(90% 70% at 80% 30%, rgba(59,130,246,0.16), transparent 60%)," +
+              "radial-gradient(100% 80% at 70% 85%, rgba(236,72,153,0.16), transparent 60%)",
+          }}
+          className="relative flex min-h-screen w-full flex-col items-center justify-center gap-6 px-6 text-center"
         >
-          {/* same real aurora as the case panels */}
-          <PanelAurora />
-
-          <h2 className="relative z-10 font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl">
+          <h2 className="font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl">
             Let&apos;s build the next one.
           </h2>
           <Link
             href="/#contact"
-            className="relative z-10 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-black transition-colors hover:bg-zinc-200"
           >
             Get in touch
             <ArrowRight className="h-4 w-4" strokeWidth={1.75} />
