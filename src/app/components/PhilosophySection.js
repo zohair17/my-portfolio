@@ -45,48 +45,67 @@ export default function PhilosophySection() {
         scrollTrigger: { trigger: ".ph-headline", start: "top 80%" },
       });
 
-      // Cinematic entrance — cards swing in from depth, one after the other.
-      gsap.from(".ph-card", {
-        y: 120,
-        z: -420,
-        rotateX: 28,
-        rotateY: (i) => (i - 1) * 14,
-        opacity: 0,
-        filter: "blur(14px)",
-        duration: 1.25,
-        ease: "power4.out",
-        stagger: 0.16,
-        scrollTrigger: { trigger: ".ph-cards", start: "top 85%" },
-      });
+      // The depth entrance and parallax are desktop-only: in the single-column
+      // phone layout every card sits far off the shared perspective origin, so
+      // the same rotations read as a skew. Phones get a clean rise instead.
+      const mm = gsap.matchMedia();
 
-      // Scrubbed parallax — the middle card drifts slower, so the row keeps
-      // breathing as you scroll past it.
-      gsap.utils.toArray(".ph-card").forEach((card, i) => {
-        gsap.to(card, {
-          y: i === 1 ? -70 : -28,
+      mm.add("(min-width: 768px)", () => {
+        gsap.from(".ph-card", {
+          y: 120,
+          z: -420,
+          rotateX: 28,
+          rotateY: (i) => (i - 1) * 14,
+          opacity: 0,
+          filter: "blur(14px)",
+          duration: 1.25,
+          ease: "power4.out",
+          stagger: 0.16,
+          scrollTrigger: { trigger: ".ph-cards", start: "top 85%" },
+        });
+
+        // Scrubbed parallax — the middle card drifts further, so the row keeps
+        // breathing as you scroll past it.
+        gsap.utils.toArray(".ph-card").forEach((card, i) => {
+          gsap.to(card, {
+            y: i === 1 ? -70 : -28,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".ph-cards",
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1,
+            },
+          });
+        });
+
+        // Headline settles back as the cards arrive — depth between the layers.
+        gsap.to(".ph-headline", {
+          yPercent: -12,
+          scale: 0.97,
+          opacity: 0.75,
           ease: "none",
           scrollTrigger: {
             trigger: ".ph-cards",
-            start: "top bottom",
+            start: "top 90%",
             end: "bottom top",
             scrub: 1,
           },
         });
       });
 
-      // Headline settles back as the cards arrive — depth between the layers.
-      gsap.to(".ph-headline", {
-        yPercent: -12,
-        scale: 0.97,
-        opacity: 0.75,
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".ph-cards",
-          start: "top 90%",
-          end: "bottom top",
-          scrub: 1,
-        },
+      mm.add("(max-width: 767px)", () => {
+        gsap.from(".ph-card", {
+          y: 60,
+          opacity: 0,
+          filter: "blur(8px)",
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.14,
+          scrollTrigger: { trigger: ".ph-cards", start: "top 88%" },
+        });
       });
+
     }, sectionRef);
 
     return () => ctx.revert();
@@ -115,7 +134,7 @@ export default function PhilosophySection() {
         ))}
       </h2>
 
-      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 [perspective:1400px] [transform-style:preserve-3d] md:grid-cols-3">
+      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3 md:[perspective:1400px] md:[transform-style:preserve-3d]">
         {CARDS.map(({ icon: Icon, title, body, glow }) => (
           <TiltCard key={title} glow={glow} className="ph-card p-8">
             <div

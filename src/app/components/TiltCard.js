@@ -14,7 +14,9 @@ export default function TiltCard({
 
   const onMove = (e) => {
     const el = ref.current;
-    if (!el) return;
+    // Touch/pen taps fire a move but never a leave, so the tilt would stick and
+    // leave the card skewed on phones — only a real mouse tilts.
+    if (!el || (e.pointerType && e.pointerType !== "mouse")) return;
     const r = el.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
@@ -36,7 +38,7 @@ export default function TiltCard({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ "--mx": "50%", "--my": "50%", "--glow": glow }}
-      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform duration-200 ease-out will-change-transform ${className}`}
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform duration-200 ease-out will-change-transform max-md:[transform:none!important] ${className}`}
     >
       {/* light-following glow */}
       <div
