@@ -28,6 +28,8 @@ export default function FeaturedProjects() {
           The last one is non-sticky so the short "View More" link below (not a
           full panel) never sits under the pinned last case. */}
       <div className="relative mt-10">
+        {/* sticky panels stay pinned behind; the closing block below is opaque
+            and sits on top so their stands/cards never peek through. */}
         {shown.map((project, index) => (
           <CasePanel
             key={project.slug}
@@ -39,7 +41,10 @@ export default function FeaturedProjects() {
       </div>
 
       {/* Route to the full showcase (handles "more than HOME_COUNT"). */}
-      <div className="flex justify-center px-6 pb-32">
+      <div
+        style={{ zIndex: shown.length + 1 }}
+        className="relative flex justify-center px-6 pb-32 pt-8"
+      >
         <Link
           href="/work"
           className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-white hover:text-black"

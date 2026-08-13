@@ -62,29 +62,57 @@ export default function SkillsSection() {
           The tech I build with.
         </h2>
 
-        <div className="skills-grid mt-16 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-          {SKILLS.map(({ name, icon: Icon, color, glow }, i) => (
-            <TiltCard
-              key={name}
-              glow={glow}
-              max={12}
-              className="skill-card skill-float p-8"
-            >
-              <div style={{ animationDelay: `${i * 0.35}s` }} className="skill-inner">
+        {/* 3D spiral cylinder — the ring spins non-stop and pauses on hover.
+            Each card sits at its own angle on the cylinder and steps down the
+            spiral, logo centred with its name underneath. */}
+        <div className="skills-grid mt-28 flex h-[26rem] sm:h-[30rem] items-center justify-center [perspective:1100px] sm:[perspective:2200px]">
+          <div className="tech-ring relative h-full w-[15rem] [transform-style:preserve-3d]">
+            {SKILLS.map(({ name, icon: Icon, color, glow }, i) => {
+              const angle = (360 / SKILLS.length) * i;
+              const y = -110 + (220 / (SKILLS.length - 1)) * i; // spiral rise
+              return (
                 <div
-                  className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5"
-                  style={{ boxShadow: `0 0 24px ${glow}` }}
+                  key={name}
+                  className="skill-card absolute left-1/2 top-1/2 -ml-[8rem] -mt-[5.5rem] flex h-44 w-64 flex-col items-center justify-center gap-4 rounded-2xl px-4 sm:-ml-[10rem] sm:-mt-[6.5rem] sm:h-52 sm:w-80 sm:gap-5 border border-white/12 bg-white/[0.04] backdrop-blur-sm"
+                  style={{
+                    transform: `rotateY(${angle}deg) translateZ(var(--ring-r)) translateY(${y}px)`,
+                    boxShadow: `0 0 40px ${glow}`,
+                  }}
                 >
-                  <Icon className="h-6 w-6" style={{ color }} />
+                  <div
+                    className="flex h-16 w-16 items-center justify-center rounded-2xl sm:h-20 sm:w-20 border border-white/10 bg-white/5"
+                    style={{ boxShadow: `0 0 24px ${glow}` }}
+                  >
+                    <Icon className="h-9 w-9 sm:h-11 sm:w-11" style={{ color }} />
+                  </div>
+                  <p className="text-center text-sm font-semibold leading-tight text-white sm:text-lg">{name}</p>
                 </div>
-                <p className="text-lg font-semibold text-white">{name}</p>
-              </div>
-            </TiltCard>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <style jsx>{`
+        .tech-ring {
+          --ring-r: 21rem;
+        }
+        @media (min-width: 640px) {
+          .tech-ring { --ring-r: 32rem; }
+        }
+        @media (min-width: 1024px) {
+          .tech-ring { --ring-r: 44rem; }
+        }
+        .tech-ring {
+          animation: techSpin 26s linear infinite;
+        }
+        .tech-ring:has(.skill-card:hover) {
+          animation-play-state: paused;
+        }
+        @keyframes techSpin {
+          from { transform: rotateY(0deg); }
+          to { transform: rotateY(-360deg); }
+        }
         :global(.skill-float) {
           animation: skillFloat 6s ease-in-out infinite;
         }

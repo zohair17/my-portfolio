@@ -11,6 +11,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Shopify", "Tailwind"],
     tint: "from-amber-600/25 to-orange-700/15",
     screen: "url('/asset/Darimooch/hero%20section.png')",
+
+    video: "/asset/Darimooch/Screen%20Recording%202026-08-11%20171049.mp4",
   },
   {
     title: "TCS",
@@ -19,6 +21,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "React", "GSAP", "Tailwind"],
     tint: "from-sky-500/25 to-emerald-500/15",
     screen: "url('/asset/TCS/hero.png')",
+
+    video: "/asset/TCS/lv_0_20260703185935.mp4",
   },
   {
     title: "Elyscents",
@@ -27,6 +31,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "Framer Motion", "Shopify", "Tailwind"],
     tint: "from-fuchsia-600/25 to-rose-500/15",
     screen: "url('/asset/Elyscents/hero%20section.png')",
+
+    video: "/asset/Elyscents/Screen%20Recording%202026-08-11%20170750.mp4",
   },
   {
     title: "Shilajit Energy Drink",
@@ -35,6 +41,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
     tint: "from-emerald-600/25 to-lime-500/15",
     screen: "url('/asset/Shilajeet/Hero%20section.png')",
+
+    video: "/asset/Shilajeet/shilajeet.mp4",
   },
   {
     title: "Nike — Air Jordan",
@@ -43,6 +51,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
     tint: "from-red-600/25 to-rose-800/15",
     screen: "url('/asset/Nike/hero.png')",
+
+    video: "/asset/Nike/video.mp4",
   },
   {
     title: "PIA",
@@ -51,6 +61,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-emerald-700/25 to-yellow-600/15",
     screen: "url('/asset/PIA/Hero.png')",
+
+    video: "/asset/PIA/Screen%20Recording%202026-08-11%20140016.mp4",
   },
   {
     title: "Samurae Punk",
@@ -59,6 +71,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-red-600/25 to-neutral-800/20",
     screen: "url('/asset/Samurae%20punk/hero.png')",
+
+    video: "/asset/Samurae%20punk/Screen%20Recording%202026-08-11%20173941.mp4",
   },
   {
     title: "Highfy",
@@ -67,6 +81,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-fuchsia-600/25 to-purple-600/15",
     screen: "url('/asset/highfy/hero.png')",
+
+    video: "/asset/highfy/video.mp4",
   },
   {
     title: "Boss Leaf",
@@ -75,6 +91,8 @@ export const FEATURED_PROJECTS = [
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-red-700/20 to-zinc-800/20",
     screen: "url('/asset/boss-leaf/Screenshot%202026-08-11%20180230.png')",
+
+    video: "/asset/boss-leaf/Screen%20Recording%202026-08-11%20180539.mp4",
   },
 ];
 

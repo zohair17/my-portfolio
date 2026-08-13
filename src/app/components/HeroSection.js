@@ -150,7 +150,16 @@ export default function HeroSection() {
           {...reveal(0.15)}
           className="block text-[clamp(3.5rem,15vw,15rem)] text-white"
         >
-          Zohair
+          {/* Per-letter hover: the hovered glyph drops its white fill and
+              keeps only the outline, then fades back to white on leave. */}
+          {"Zohair".split("").map((ch, i) => (
+            <span
+              key={i}
+              className="inline-block cursor-default transition-colors duration-200 hover:text-transparent hover:[-webkit-text-stroke:2px_rgba(255,255,255,0.9)]"
+            >
+              {ch}
+            </span>
+          ))}
         </motion.span>
         <motion.span
           {...reveal(0.35)}

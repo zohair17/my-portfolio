@@ -45,13 +45,47 @@ export default function PhilosophySection() {
         scrollTrigger: { trigger: ".ph-headline", start: "top 80%" },
       });
 
+      // Cinematic entrance — cards swing in from depth, one after the other.
       gsap.from(".ph-card", {
-        y: 90,
+        y: 120,
+        z: -420,
+        rotateX: 28,
+        rotateY: (i) => (i - 1) * 14,
         opacity: 0,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.15,
+        filter: "blur(14px)",
+        duration: 1.25,
+        ease: "power4.out",
+        stagger: 0.16,
         scrollTrigger: { trigger: ".ph-cards", start: "top 85%" },
+      });
+
+      // Scrubbed parallax — the middle card drifts slower, so the row keeps
+      // breathing as you scroll past it.
+      gsap.utils.toArray(".ph-card").forEach((card, i) => {
+        gsap.to(card, {
+          y: i === 1 ? -70 : -28,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".ph-cards",
+            start: "top bottom",
+            end: "bottom top",
+            scrub: 1,
+          },
+        });
+      });
+
+      // Headline settles back as the cards arrive — depth between the layers.
+      gsap.to(".ph-headline", {
+        yPercent: -12,
+        scale: 0.97,
+        opacity: 0.75,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".ph-cards",
+          start: "top 90%",
+          end: "bottom top",
+          scrub: 1,
+        },
       });
     }, sectionRef);
 
@@ -65,6 +99,9 @@ export default function PhilosophySection() {
     >
       {/* soft ambient lighting */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[120px]" />
+      {/* cinematic letterbox falloff at the section edges */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
 
       <p className="mb-6 text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
         My Philosophy
@@ -78,7 +115,7 @@ export default function PhilosophySection() {
         ))}
       </h2>
 
-      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 [perspective:1400px] [transform-style:preserve-3d] md:grid-cols-3">
         {CARDS.map(({ icon: Icon, title, body, glow }) => (
           <TiltCard key={title} glow={glow} className="ph-card p-8">
             <div

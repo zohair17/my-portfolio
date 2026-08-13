@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, ArrowDown } from "lucide-react";
 import { FEATURED_PROJECTS } from "../work/data";
-import CasePanel from "./CasePanel";
+import ProjectsDisplay from "./ProjectsDisplay";
 
 // Rotating hero headline — web-development focused, cycled in the centre title.
 const DISCIPLINES = [
@@ -126,17 +126,11 @@ export default function ProjectsShowcase() {
         </motion.a>
       </section>
 
-      {/* ── Stacked "case" panels — transparent sections (the one page-wide
-             aurora shows through behind them all), opaque cards that cover the
-             panel behind while stacking. The closing panel is the final layer. ── */}
-      <div id="projects" className="relative z-10">
-        {projects.map((p, i) => (
-          <CasePanel key={p.slug} project={p} index={i} />
-        ))}
+      {/* ── The project archive lives inside one device screen (LCD on desktop,
+             phone on mobile); the closing panel below is the send-off. ── */}
+      <ProjectsDisplay />
 
-        {/* closing panel — the last case has no next card to cover it, so this
-            final panel is opaque (a still, dark aurora tint) and sits on top of
-            the stack, sliding up to cover the last case as the send-off */}
+      <div className="relative z-10">
         <section
           style={{
             zIndex: projects.length + 1,

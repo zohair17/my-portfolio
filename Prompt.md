@@ -1,1 +1,1 @@
-nahi dekho bhot ajeeb lag raha hai.. dekho isko hta do .. text jo pehlay tha wesay e kardo baqi "https://www.noth.in/" ye lin dekho iska hero section ami jo hover effect lga hua hai agar wo kar sktay ho to kardo bilkul exact same animation effect wo bhi hero sectio mai iskai ilawa background text ya text color wagera cahnge na akrna plaesa aur 4000 sai ziada token consume mat karna
+1) 
