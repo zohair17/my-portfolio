@@ -37,6 +37,17 @@ export default function ProjectsDisplay() {
 
   const videoRef = useRef(null);
   const prefetched = useRef(new Set());
+
+  // Warm the file on first hover/touch so the tap that follows has something
+  // buffered instead of waiting on the network.
+  const prefetch = (src) => {
+    if (!src || prefetched.current.has(src)) return;
+    prefetched.current.add(src);
+    const v = document.createElement("video");
+    v.preload = "auto";
+    v.muted = true;
+    v.src = src;
+  };
   const project = projects.find((p) => p.slug === active) || null;
 
   // Restart whenever a different project is picked; stop when we go back/off.
@@ -92,7 +103,7 @@ export default function ProjectsDisplay() {
           >
             <video
               ref={videoRef}
-              src={project.video}
+              src={(isPhone && project.videoMobile) || project.video}
               poster={cleanUrl(project.screen)}
               muted
               loop

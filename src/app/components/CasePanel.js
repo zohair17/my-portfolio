@@ -29,6 +29,16 @@ export default function CasePanel({ project: p, index, sticky = true }) {
   const [on, setOn] = useState(false);
   const [covered, setCovered] = useState(false);
 
+  // Phones get the mobile recording of the site where one exists.
+  const [isPhone, setIsPhone] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const sync = () => setIsPhone(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
   // Ownership of the top of the stack, measured from layout (works with the
   // Lenis smooth scroll, which drives real window scrolling).
   useEffect(() => {
@@ -121,7 +131,7 @@ export default function CasePanel({ project: p, index, sticky = true }) {
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[10px] bg-black sm:rounded-xl">
                     <video
                       ref={videoRef}
-                      src={p.video}
+                      src={(isPhone && p.videoMobile) || p.video}
                       poster={cleanUrl(p.screen)}
                       muted
                       loop

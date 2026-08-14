@@ -13,6 +13,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/Darimooch/hero%20section.png')",
 
     video: "/asset/Darimooch/Screen%20Recording%202026-08-11%20171049.mp4",
+
+
+    videoMobile: "/asset/Darimooch/Darimooch%20Mobile.mp4",
   },
   {
     title: "TCS",
@@ -23,6 +26,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/TCS/hero.png')",
 
     video: "/asset/TCS/lv_0_20260703185935.mp4",
+
+
+    videoMobile: "/asset/TCS/tcs%20mobile.mp4",
   },
   {
     title: "Elyscents",
@@ -33,6 +39,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/Elyscents/hero%20section.png')",
 
     video: "/asset/Elyscents/Screen%20Recording%202026-08-11%20170750.mp4",
+
+
+    videoMobile: "/asset/Elyscents/Elyscent%20Mobile.mp4",
   },
   {
     title: "Shilajit Energy Drink",
@@ -53,6 +62,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/Nike/hero.png')",
 
     video: "/asset/Nike/video.mp4",
+
+
+    videoMobile: "/asset/Nike/Nike%20Mobile%20View.mp4",
   },
   {
     title: "PIA",
@@ -73,6 +85,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/Samurae%20punk/hero.png')",
 
     video: "/asset/Samurae%20punk/Screen%20Recording%202026-08-11%20173941.mp4",
+
+
+    videoMobile: "/asset/Samurae%20punk/Samurae%20Mobile.mp4",
   },
   {
     title: "Highfy",
@@ -83,6 +98,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/highfy/hero.png')",
 
     video: "/asset/highfy/video.mp4",
+
+
+    videoMobile: "/asset/highfy/Highdy%20Mobile.mp4",
   },
   {
     title: "Boss Leaf",
@@ -93,6 +111,9 @@ export const FEATURED_PROJECTS = [
     screen: "url('/asset/boss-leaf/Screenshot%202026-08-11%20180230.png')",
 
     video: "/asset/boss-leaf/Screen%20Recording%202026-08-11%20180539.mp4",
+
+
+    videoMobile: "/asset/boss-leaf/boss%20leaf%20mobile.mp4",
   },
 ];
 
