@@ -10,12 +10,15 @@ export const FEATURED_PROJECTS = [
     desc: "A men's grooming and beard-care brand, revamped with a bold, masculine storefront and cinematic product storytelling.",
     stack: ["Next.js", "GSAP", "Shopify", "Tailwind"],
     tint: "from-amber-600/25 to-orange-700/15",
-    screen: "url('/asset/Darimooch/hero%20section.png')",
+    screen: "url('/asset/Darimooch/hero%20section.webp')",
 
     video: "/asset/Darimooch/Screen%20Recording%202026-08-11%20171049.mp4",
 
 
     videoMobile: "/asset/Darimooch/Darimooch%20Mobile.mp4",
+
+
+    screenMobile: "/asset/Darimooch/poster-mobile.webp",
   },
   {
     title: "TCS",
@@ -23,12 +26,15 @@ export const FEATURED_PROJECTS = [
     desc: "Pakistan's largest courier network, reimagined with a cleaner, tracking-first experience and a modern, trustworthy interface.",
     stack: ["Next.js", "React", "GSAP", "Tailwind"],
     tint: "from-sky-500/25 to-emerald-500/15",
-    screen: "url('/asset/TCS/hero.png')",
+    screen: "url('/asset/TCS/hero.webp')",
 
     video: "/asset/TCS/lv_0_20260703185935.mp4",
 
 
     videoMobile: "/asset/TCS/tcs%20mobile.mp4",
+
+
+    screenMobile: "/asset/TCS/poster-mobile.webp",
   },
   {
     title: "Elyscents",
@@ -36,12 +42,15 @@ export const FEATURED_PROJECTS = [
     desc: "A premium fragrance house redesigned around atmosphere, scent storytelling and an elegant shopping experience.",
     stack: ["Next.js", "Framer Motion", "Shopify", "Tailwind"],
     tint: "from-fuchsia-600/25 to-rose-500/15",
-    screen: "url('/asset/Elyscents/hero%20section.png')",
+    screen: "url('/asset/Elyscents/hero%20section.webp')",
 
     video: "/asset/Elyscents/Screen%20Recording%202026-08-11%20170750.mp4",
 
 
     videoMobile: "/asset/Elyscents/Elyscent%20Mobile.mp4",
+
+
+    screenMobile: "/asset/Elyscents/poster-mobile.webp",
   },
   {
     title: "Shilajit Energy Drink",
@@ -49,9 +58,11 @@ export const FEATURED_PROJECTS = [
     desc: "An energy drink crafted with Shilajit and Zamzam water, presented through a bold, high-energy brand experience.",
     stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
     tint: "from-emerald-600/25 to-lime-500/15",
-    screen: "url('/asset/Shilajeet/Hero%20section.png')",
+    screen: "url('/asset/Shilajeet/Hero%20section.webp')",
 
     video: "/asset/Shilajeet/shilajeet.mp4",
+    videoMobile: "/asset/Shilajeet/Shilajeet%20mobile.mp4",
+    screenMobile: "/asset/Shilajeet/poster-mobile.webp",
   },
   {
     title: "Nike — Air Jordan",
@@ -59,12 +70,15 @@ export const FEATURED_PROJECTS = [
     desc: "An interactive Air Jordan showcase — a sneaker landing concept built around a floating hero product, motion-driven feature reveals and bold editorial type.",
     stack: ["Next.js", "GSAP", "Three.js", "Tailwind"],
     tint: "from-red-600/25 to-rose-800/15",
-    screen: "url('/asset/Nike/hero.png')",
+    screen: "url('/asset/Nike/hero.webp')",
 
     video: "/asset/Nike/video.mp4",
 
 
     videoMobile: "/asset/Nike/Nike%20Mobile%20View.mp4",
+
+
+    screenMobile: "/asset/Nike/poster-mobile.webp",
   },
   {
     title: "PIA",
@@ -72,7 +86,7 @@ export const FEATURED_PROJECTS = [
     desc: "A concept revamp of Pakistan International Airlines — a booking-first experience with flight search, cabin classes, a modern fleet and a global route map.",
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-emerald-700/25 to-yellow-600/15",
-    screen: "url('/asset/PIA/Hero.png')",
+    screen: "url('/asset/PIA/Hero.webp')",
 
     video: "/asset/PIA/Screen%20Recording%202026-08-11%20140016.mp4",
   },
@@ -82,12 +96,15 @@ export const FEATURED_PROJECTS = [
     desc: "A cinematic landing page for a fictional open-world action-RPG — neon-samurai art direction, feature reveals and a bold red-on-black identity.",
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-red-600/25 to-neutral-800/20",
-    screen: "url('/asset/Samurae%20punk/hero.png')",
+    screen: "url('/asset/Samurae%20punk/hero.webp')",
 
     video: "/asset/Samurae%20punk/Screen%20Recording%202026-08-11%20173941.mp4",
 
 
     videoMobile: "/asset/Samurae%20punk/Samurae%20Mobile.mp4",
+
+
+    screenMobile: "/asset/Samurae%20punk/poster-mobile.webp",
   },
   {
     title: "Highfy",
@@ -95,12 +112,15 @@ export const FEATURED_PROJECTS = [
     desc: "A beauty & cosmetics e-commerce concept — category-rich navigation, animated product showcases and a bright, trustworthy shopping experience.",
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-fuchsia-600/25 to-purple-600/15",
-    screen: "url('/asset/highfy/hero.png')",
+    screen: "url('/asset/highfy/hero.webp')",
 
     video: "/asset/highfy/video.mp4",
 
 
     videoMobile: "/asset/highfy/Highdy%20Mobile.mp4",
+
+
+    screenMobile: "/asset/highfy/poster-mobile.webp",
   },
   {
     title: "Boss Leaf",
@@ -108,12 +128,15 @@ export const FEATURED_PROJECTS = [
     desc: "A dark, premium site for a natural leaf-wraps brand — cinematic product staging, a flavour-led shop and a wholesale funnel. (18+)",
     stack: ["Next.js", "GSAP", "Framer Motion", "Tailwind"],
     tint: "from-red-700/20 to-zinc-800/20",
-    screen: "url('/asset/boss-leaf/Screenshot%202026-08-11%20180230.png')",
+    screen: "url('/asset/boss-leaf/Screenshot%202026-08-11%20180230.webp')",
 
     video: "/asset/boss-leaf/Screen%20Recording%202026-08-11%20180539.mp4",
 
 
     videoMobile: "/asset/boss-leaf/boss%20leaf%20mobile.mp4",
+
+
+    screenMobile: "/asset/boss-leaf/poster-mobile.webp",
   },
 ];
 

@@ -132,11 +132,11 @@ export default function CasePanel({ project: p, index, sticky = true }) {
                     <video
                       ref={videoRef}
                       src={(isPhone && p.videoMobile) || p.video}
-                      poster={cleanUrl(p.screen)}
+                      poster={(isPhone && p.screenMobile) || cleanUrl(p.screen)}
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload={on ? "auto" : "metadata"}
                       className={`h-full w-full object-cover object-top transition-opacity duration-700 ${
                         on ? "opacity-100" : "opacity-0"
                       }`}

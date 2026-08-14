@@ -49,6 +49,13 @@ export default function ProjectsDisplay() {
     v.src = src;
   };
   const project = projects.find((p) => p.slug === active) || null;
+  // On a phone prefer the portrait recording (and its own poster) when the
+  // project has one; otherwise fall back to the desktop capture.
+  const src = project && ((isPhone && project.videoMobile) || project.video);
+  const portrait = Boolean(isPhone && project && project.videoMobile);
+  const poster =
+    project &&
+    (isPhone && project.screenMobile ? project.screenMobile : cleanUrl(project.screen));
 
   // Restart whenever a different project is picked; stop when we go back/off.
   useEffect(() => {
@@ -152,17 +159,17 @@ export default function ProjectsDisplay() {
                 key={p.slug}
                 type="button"
                 onClick={() => setActive(p.slug)}
-                onPointerEnter={() => prefetch(p.video)}
-                onTouchStart={() => prefetch(p.video)}
+                onPointerEnter={() => prefetch((isPhone && p.videoMobile) || p.video)}
+                onTouchStart={() => prefetch((isPhone && p.videoMobile) || p.video)}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: Math.min(i * 0.05, 0.4) }}
                 className="group overflow-hidden rounded-lg border border-white/12 bg-white/[0.03] text-left transition-colors hover:border-white/35 hover:bg-white/[0.07]"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <div className={`relative w-full overflow-hidden ${isPhone ? "aspect-[9/16]" : "aspect-[16/10]"}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={cleanUrl(p.screen)}
+                    src={(isPhone && p.screenMobile) || cleanUrl(p.screen)}
                     alt=""
                     loading="lazy"
                     className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
