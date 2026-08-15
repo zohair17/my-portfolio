@@ -52,7 +52,6 @@ export default function ProjectsDisplay() {
   // On a phone prefer the portrait recording (and its own poster) when the
   // project has one; otherwise fall back to the desktop capture.
   const src = project && ((isPhone && project.videoMobile) || project.video);
-  const portrait = Boolean(isPhone && project && project.videoMobile);
   const poster =
     project &&
     (isPhone && project.screenMobile ? project.screenMobile : cleanUrl(project.screen));
@@ -62,7 +61,8 @@ export default function ProjectsDisplay() {
     const v = videoRef.current;
     if (!v) return;
     if (project && powered) {
-      v.currentTime = 0;
+      // Rewinding a video that has not buffered yet stalls playback on mobile.
+      if (v.readyState >= 1 && v.currentTime > 0) v.currentTime = 0;
       v.play().catch(() => {});
     } else {
       v.pause();
@@ -110,13 +110,21 @@ export default function ProjectsDisplay() {
           >
             <video
               ref={videoRef}
-              src={(isPhone && project.videoMobile) || project.video}
-              poster={cleanUrl(project.screen)}
+              src={src}
+              poster={poster}
               muted
               loop
               playsInline
-              preload="metadata"
-              className="h-full w-full object-cover object-top"
+              autoPlay
+              preload="auto"
+              onCanPlay={(e) => e.currentTarget.play().catch(() => {})}
+              // The phone recordings are roughly 9:16 while the handset screen
+              // is 9:19.5, so filling it would crop a fifth of the width away
+              // and cut the headings in half. Contain shows the whole capture,
+              // letterboxed. The monitor is close enough to 16:9 to fill.
+              className={`h-full w-full ${
+                isPhone ? "object-contain" : "object-cover object-top"
+              }`}
             />
             <div className="absolute inset-x-0 top-0 flex items-center justify-between gap-3 bg-gradient-to-b from-black/80 to-transparent p-3 sm:p-4">
               <button
