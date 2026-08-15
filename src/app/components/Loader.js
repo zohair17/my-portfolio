@@ -56,7 +56,7 @@ export default function Loader() {
       // 1 - load: the counter runs and the editor types itself out with it.
       .to(count, {
         v: 100,
-        duration: 3.2,
+        duration: 2.6,
         ease: "power1.inOut",
         onUpdate: () => {
           progress.current = count.v / 100;
@@ -72,7 +72,7 @@ export default function Loader() {
       .to(hudRef.current, { opacity: 0, y: 12, duration: 0.5 }, "<")
 
       // 3 - the display blows out, covering the swap to the real page.
-      .to(flashRef.current, { opacity: 1, duration: 0.55, ease: "power2.in" }, "+=0.75")
+      .to(flashRef.current, { opacity: 1, duration: 0.5, ease: "power2.in" }, "+=0.6")
       .to([sceneRef.current, backRef.current], { opacity: 0, duration: 0.3 }, "<0.35")
       .to(flashRef.current, { opacity: 0, duration: 0.7, ease: "power2.out" });
 
