@@ -11,6 +11,9 @@ const cleanUrl = (s) =>
 // video, serif title + hashtags on the right. `sticky` turns on the
 // pin-and-stack scroll (each panel pins, and the next slides up over it).
 //
+// The monitor shows the desktop capture at every width — the panel renders an
+// LCD on phones too, so the portrait cut would be the wrong footage for it.
+//
 // The monitor only powers on once this panel is *properly* on top of the stack:
 // its own section is pinned at the viewport top and the next panel has not yet
 // started sliding over it. Scrolling on to the next case powers this screen back
@@ -28,16 +31,6 @@ export default function CasePanel({ project: p, index, sticky = true }) {
   const videoRef = useRef(null);
   const [on, setOn] = useState(false);
   const [covered, setCovered] = useState(false);
-
-  // Phones get the mobile recording of the site where one exists.
-  const [isPhone, setIsPhone] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    const sync = () => setIsPhone(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
-  }, []);
 
   // Ownership of the top of the stack, measured from layout (works with the
   // Lenis smooth scroll, which drives real window scrolling).
@@ -131,8 +124,8 @@ export default function CasePanel({ project: p, index, sticky = true }) {
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[10px] bg-black sm:rounded-xl">
                     <video
                       ref={videoRef}
-                      src={(isPhone && p.videoMobile) || p.video}
-                      poster={(isPhone && p.screenMobile) || cleanUrl(p.screen)}
+                      src={p.video}
+                      poster={cleanUrl(p.screen)}
                       muted
                       loop
                       playsInline

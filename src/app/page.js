@@ -20,9 +20,12 @@ export default function Home() {
       <main className="relative z-10 bg-transparent">
         <HeroSection />
         <AboutSection />
+        {/* Work comes straight after the intro — a visitor who has just read
+            who I am should hit the projects next, not three more preamble
+            sections. */}
+        <FeaturedProjects />
         <PhilosophySection />
         <SkillsSection />
-        <FeaturedProjects />
         {/* <ProductionProjects /> */}
         <BehindScenes />
         <ProcessSection />
