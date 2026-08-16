@@ -99,7 +99,14 @@ export default function SmoothScroll({ children }) {
     // entrance tween sits frozen on its "from" values (skewed cards, hidden
     // text). Re-measuring after the overlay clears and after the scroll settles
     // fixes both cases.
-    const remeasure = () => ScrollTrigger.refresh();
+    // The loader holds the body locked, so any scroll attempted while it runs
+    // is swallowed. Re-apply the target once it clears.
+    const remeasure = () => {
+      ScrollTrigger.refresh();
+      tries = 0;
+      cancelled = false;
+      settle();
+    };
     window.addEventListener("loader:done", remeasure);
 
     return () => {
