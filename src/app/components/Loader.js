@@ -8,9 +8,11 @@ import AuroraBackground from "./AuroraBackground";
 // The 3D scene is browser-only and heavy, so it never renders on the server.
 const LoaderScene = dynamic(() => import("./LoaderScene"), { ssr: false });
 
-// Shown once per tab. Coming back from a project page should not replay a
-// six-second intro the visitor has already sat through.
-const SEEN_KEY = "loader:seen";
+// Module state: it survives client-side navigation but not a real page load.
+// That is exactly the line we want — coming Back from a project should not
+// replay an intro the visitor has just sat through, while a fresh visit or a
+// refresh still gets the full thing.
+let played = false;
 
 // How long to wait for WebGL before giving up on the 3D version. The scene is a
 // ~230KB chunk, so on a slow connection it can take a moment; past this we run
@@ -57,17 +59,10 @@ export default function Loader() {
   const onSceneReady = () => begin.current && begin.current();
 
   useEffect(() => {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(SEEN_KEY) === "1";
-    } catch {
-      seen = false;
-    }
-
-    if (seen) {
-      // Torn down on the next tick rather than during render: reading storage
-      // at render time would disagree with the server-rendered markup and break
-      // hydration. The tick also lets the hero attach its listener first.
+    if (played) {
+      // Torn down on the next tick rather than during render, which would
+      // disagree with the server-rendered markup and break hydration. The tick
+      // also lets the hero attach its listener before the cue fires.
       const t = setTimeout(() => {
         setDone(true);
         window.dispatchEvent(new Event("loader:done"));
@@ -84,11 +79,7 @@ export default function Loader() {
 
     const finish = () => {
       document.body.style.overflow = "";
-      try {
-        sessionStorage.setItem(SEEN_KEY, "1");
-      } catch {
-        /* private mode — the intro simply plays again next navigation */
-      }
+      played = true;
       setDone(true);
       // Cue the hero to start its video now that the overlay is gone.
       window.dispatchEvent(new Event("loader:done"));
