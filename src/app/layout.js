@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         {/* Site-wide animated aurora backdrop — sits behind every page's
             content (pages are transparent above it). */}
         <div aria-hidden className="pointer-events-none fixed inset-0 z-0">
-          <AuroraBackground className="absolute inset-0 h-full w-full opacity-70 [filter:blur(30px)]" />
+          <AuroraBackground className="absolute inset-0 h-full w-full opacity-70 [filter:blur(22px)]" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         {children}

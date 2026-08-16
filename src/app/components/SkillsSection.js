@@ -73,7 +73,7 @@ export default function SkillsSection() {
               return (
                 <div
                   key={name}
-                  className="skill-card absolute left-1/2 top-1/2 -ml-[8rem] -mt-[5.5rem] flex h-44 w-64 flex-col items-center justify-center gap-4 rounded-2xl px-4 sm:-ml-[10rem] sm:-mt-[6.5rem] sm:h-52 sm:w-80 sm:gap-5 border border-white/12 bg-white/[0.04] backdrop-blur-sm"
+                  className="skill-card absolute left-1/2 top-1/2 -ml-[8rem] -mt-[5.5rem] flex h-44 w-64 flex-col items-center justify-center gap-4 rounded-2xl px-4 sm:-ml-[10rem] sm:-mt-[6.5rem] sm:h-52 sm:w-80 sm:gap-5 border border-white/12 bg-white/[0.06]"
                   style={{
                     transform: `rotateY(${angle}deg) translateZ(var(--ring-r)) translateY(${y}px)`,
                     boxShadow: `0 0 40px ${glow}`,

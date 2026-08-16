@@ -38,7 +38,7 @@ export default function TiltCard({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       style={{ "--mx": "50%", "--my": "50%", "--glow": glow }}
-      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-transform duration-200 ease-out will-change-transform max-md:[transform:none!important] ${className}`}
+      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] shadow-[0_8px_40px_rgba(0,0,0,0.45)] backdrop-blur-md max-md:backdrop-blur-none transition-transform duration-200 ease-out will-change-transform max-md:[transform:none!important] ${className}`}
     >
       {/* light-following glow */}
       <div

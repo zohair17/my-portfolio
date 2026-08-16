@@ -40,22 +40,22 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full overflow-hidden bg-transparent px-6 py-28"
+      className="relative w-full overflow-hidden bg-transparent px-5 py-20 sm:px-6 sm:py-28"
     >
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-indigo-600/10 blur-[130px]"
+        className="pointer-events-none absolute -left-32 top-1/4 h-[18rem] w-[18rem] rounded-full bg-indigo-600/10 blur-[80px] sm:h-[28rem] sm:w-[28rem] sm:blur-[130px]"
         animate={{ x: [0, 40, 0], y: [0, -30, 0], opacity: [0.6, 1, 0.6] }}
         transition={{ duration: 14, ease: "easeInOut", repeat: Infinity }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -right-24 bottom-0 h-[24rem] w-[24rem] rounded-full bg-emerald-500/10 blur-[130px]"
+        className="pointer-events-none absolute -right-24 bottom-0 h-[16rem] w-[16rem] rounded-full bg-emerald-500/10 blur-[80px] sm:h-[24rem] sm:w-[24rem] sm:blur-[130px]"
         animate={{ x: [0, -30, 0], y: [0, 25, 0], opacity: [0.4, 0.8, 0.4] }}
         transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
       />
 
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 sm:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +65,7 @@ export default function AboutSection() {
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
             About Me
           </p>
-          <h2 className="text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             Frontend &amp; mobile developer crafting polished, scalable products.
           </h2>
         </motion.div>
@@ -76,7 +76,7 @@ export default function AboutSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.1, ease }}
         >
-          <p className="text-lg leading-relaxed text-zinc-300">
+          <p className="text-base leading-relaxed text-zinc-300 sm:text-lg">
             I&apos;m Zohair Ahmed, a Frontend &amp; Mobile Application Developer with
             4+ years of experience across Flutter, React.js and SPFx. I specialise
             in building scalable fintech and enterprise applications — turning
@@ -110,7 +110,7 @@ export default function AboutSection() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.4 }}
-            className="mt-8 grid grid-cols-3 gap-4"
+            className="mt-8 grid grid-cols-1 gap-3 min-[420px]:grid-cols-3 sm:gap-4"
           >
             {STATS.map((s) => (
               <motion.div
@@ -118,12 +118,12 @@ export default function AboutSection() {
                 variants={item}
                 whileHover={{ y: -4, borderColor: "rgba(129,140,248,0.4)" }}
                 transition={{ duration: 0.25, ease }}
-                className="rounded-2xl border border-white/10 bg-white/[0.03] p-4"
+                className="rounded-2xl border border-white/10 bg-white/[0.03] p-3.5 sm:p-4"
               >
-                <p className="text-xl font-semibold text-white sm:text-2xl">
+                <p className="text-lg font-semibold leading-tight text-white sm:text-2xl">
                   {s.value}
                 </p>
-                <p className="mt-1 text-xs leading-snug text-zinc-500">{s.label}</p>
+                <p className="mt-1 text-[11px] leading-snug text-zinc-500 sm:text-xs">{s.label}</p>
               </motion.div>
             ))}
           </motion.div>

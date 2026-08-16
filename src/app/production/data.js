@@ -7,27 +7,27 @@ export const PRODUCTION_PROJECTS = [
     description:
       "Cybersecurity platform offering SOC-as-a-service — real-time threat detection, cloud security and compliance.",
     url: "https://www.socvault.io/",
-    screen: "/asset/Production%20Project/socVault/socVault.png",
+    screen: "/asset/Production%20Project/socVault/socVault.webp",
   },
   {
     title: "Razaee",
     description:
       "Premium bedding and home-textile store — duvet covers, sheet sets and blankets in high-quality cotton.",
     url: "https://www.razaee.com/",
-    screen: "/asset/Production%20Project/razae/razae.png",
+    screen: "/asset/Production%20Project/razae/razae.webp",
   },
   {
     title: "Hoora TV",
     description:
       "A kids-focused video streaming platform on web and app, offering movies and shows by subscription.",
     url: "https://hooratv.tv/",
-    screen: "/asset/Production%20Project/hoora/hoora.png",
+    screen: "/asset/Production%20Project/hoora/hoora.webp",
   },
   {
     title: "Got Garms",
     description:
       "Online custom apparel store — hoodies, tees, hats and personalised products with worldwide delivery.",
     url: "https://gotgarms.com/",
-    screen: "/asset/Production%20Project/gotGrams/gotGrams.png",
+    screen: "/asset/Production%20Project/gotGrams/gotGrams.webp",
   },
 ];
