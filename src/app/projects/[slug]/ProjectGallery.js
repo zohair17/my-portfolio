@@ -30,7 +30,7 @@ export default function ProjectGallery({ data, slug }) {
   const handleBack = () => {
     // Always land on this project inside the home stack, rather than
     // trusting history to restore the scroll position.
-    router.push(slug ? `/#project-${slug}` : "/#work");
+    router.push(slug ? `/#project-${slug}` : "/#featured");
   };
 
   return (
