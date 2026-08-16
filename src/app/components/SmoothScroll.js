@@ -5,6 +5,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
 
+// Module state, which survives client-side navigation but not a real page load
+// — exactly the distinction we need. `visited` tells a Back into the home page
+// apart from a fresh load of it, and `lastY` is where the visitor was standing
+// when they left. Only the home page mounts this, so nothing else disturbs them.
+let visited = false;
+let lastY = 0;
+
 // One global Lenis instance for the whole page, wired into GSAP's ticker so
 // every ScrollTrigger across all sections stays in sync with the smooth scroll.
 export default function SmoothScroll({ children }) {
@@ -22,7 +29,17 @@ export default function SmoothScroll({ children }) {
       smoothWheel: true,
     });
 
+    // Returning to the home page from a project or /work should land where the
+    // visitor left, not throw them back to the hero. A real load or refresh has
+    // no module state, so it still starts at the top.
+    const isReturn = visited;
+    const resumeY = isReturn ? lastY : 0;
+    visited = true;
+
     lenis.on("scroll", ScrollTrigger.update);
+    lenis.on("scroll", () => {
+      lastY = window.scrollY;
+    });
     const tick = (time) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
@@ -65,6 +82,8 @@ export default function SmoothScroll({ children }) {
       if (restoreTarget) {
         const el = document.querySelector(restoreTarget);
         if (el) lenis.scrollTo(el, { offset: -96, immediate: true, force: true });
+      } else if (resumeY > 0) {
+        lenis.scrollTo(resumeY, { immediate: true, force: true });
       } else {
         lenis.scrollTo(0, { immediate: true, force: true });
         window.scrollTo(0, 0);
