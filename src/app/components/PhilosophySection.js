@@ -35,76 +35,46 @@ export default function PhilosophySection() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.from(".ph-word", {
-        yPercent: 120,
-        opacity: 0,
-        rotateX: -60,
-        duration: 0.9,
-        ease: "power4.out",
-        stagger: 0.08,
-        scrollTrigger: { trigger: ".ph-headline", start: "top 80%" },
-      });
-
-      // The depth entrance and parallax are desktop-only: in the single-column
-      // phone layout every card sits far off the shared perspective origin, so
-      // the same rotations read as a skew. Phones get a clean rise instead.
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 768px)", () => {
-        gsap.from(".ph-card", {
-          y: 120,
-          z: -420,
-          rotateX: 28,
-          rotateY: (i) => (i - 1) * 14,
-          opacity: 0,
-          filter: "blur(14px)",
-          duration: 1.25,
+      // Same guard as the cards below: hold the "from" values back until the
+      // tween runs, so a mis-measured trigger can never leave the headline
+      // frozen tilted and half-transparent.
+      gsap.fromTo(
+        ".ph-word",
+        { yPercent: 120, opacity: 0, rotateX: -60 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          rotateX: 0,
+          duration: 0.9,
           ease: "power4.out",
-          stagger: 0.16,
-          scrollTrigger: { trigger: ".ph-cards", start: "top 85%" },
-        });
+          stagger: 0.08,
+          immediateRender: false,
+          scrollTrigger: { trigger: ".ph-headline", start: "top 80%", once: true },
+        }
+      );
 
-        // Scrubbed parallax — the middle card drifts further, so the row keeps
-        // breathing as you scroll past it.
-        gsap.utils.toArray(".ph-card").forEach((card, i) => {
-          gsap.to(card, {
-            y: i === 1 ? -70 : -28,
-            ease: "none",
-            scrollTrigger: {
-              trigger: ".ph-cards",
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          });
-        });
-
-        // Headline settles back as the cards arrive — depth between the layers.
-        gsap.to(".ph-headline", {
-          yPercent: -12,
-          scale: 0.97,
-          opacity: 0.75,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".ph-cards",
-            start: "top 90%",
-            end: "bottom top",
-            scrub: 1,
-          },
-        });
-      });
-
-      mm.add("(max-width: 767px)", () => {
-        gsap.from(".ph-card", {
-          y: 60,
-          opacity: 0,
-          filter: "blur(8px)",
+      // Deliberately flat: no rotation, no per-card offset. The 3D entrance
+      // that used to live here left the cards skewed and sitting at different
+      // heights whenever its ScrollTrigger mis-measured, which is exactly what
+      // a row of cards must never do.
+      //
+      // immediateRender is off so the "from" values are only applied once the
+      // tween actually starts. If the trigger never fires, the cards render in
+      // their normal, correct position instead of freezing mid-pose.
+      gsap.fromTo(
+        ".ph-card",
+        { y: 60, opacity: 0, filter: "blur(8px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
           duration: 0.9,
           ease: "power3.out",
           stagger: 0.14,
-          scrollTrigger: { trigger: ".ph-cards", start: "top 88%" },
-        });
-      });
+          immediateRender: false,
+          scrollTrigger: { trigger: ".ph-cards", start: "top 88%", once: true },
+        }
+      );
 
     }, sectionRef);
 
@@ -134,7 +104,7 @@ export default function PhilosophySection() {
         ))}
       </h2>
 
-      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3 md:[perspective:1400px] md:[transform-style:preserve-3d]">
+      <div className="ph-cards mt-20 grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
         {CARDS.map(({ icon: Icon, title, body, glow }) => (
           <TiltCard key={title} glow={glow} className="ph-card p-8">
             <div
