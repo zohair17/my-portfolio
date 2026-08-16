@@ -28,11 +28,9 @@ export default function ProjectGallery({ data, slug }) {
   // always jumping to home. Fall back to the home project anchor on a direct load
   // (shared link) where there's no in-app history to return to.
   const handleBack = () => {
-    if (typeof window !== "undefined" && window.history.length > 1) {
-      router.back();
-    } else {
-      router.push(slug ? `/#project-${slug}` : "/#work");
-    }
+    // Always land on this project inside the home stack, rather than
+    // trusting history to restore the scroll position.
+    router.push(slug ? `/#project-${slug}` : "/#work");
   };
 
   return (
