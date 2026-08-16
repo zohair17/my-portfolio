@@ -88,9 +88,6 @@ export default function PhilosophySection() {
     >
       {/* soft ambient lighting */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-indigo-600/10 blur-[120px]" />
-      {/* cinematic letterbox falloff at the section edges */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/50 to-transparent" />
 
       <p className="mb-6 text-xs font-medium uppercase tracking-[0.4em] text-zinc-500">
         My Philosophy
