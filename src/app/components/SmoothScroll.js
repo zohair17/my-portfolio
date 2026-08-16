@@ -70,12 +70,6 @@ export default function SmoothScroll({ children }) {
       ? hash
       : null;
 
-    // Strip the hash from the URL either way, so a later reload always starts at
-    // the hero instead of jumping back to a section.
-    if (hash) {
-      window.history.replaceState(null, "", window.location.pathname + window.location.search);
-    }
-
     let tries = 0;
     const settle = () => {
       if (cancelled) return;
@@ -88,8 +82,21 @@ export default function SmoothScroll({ children }) {
         lenis.scrollTo(0, { immediate: true, force: true });
         window.scrollTo(0, 0);
       }
-      if (++tries < 12) setTimeout(settle, 70);
-      else ScrollTrigger.refresh();
+      if (++tries < 12) {
+        setTimeout(settle, 70);
+      } else {
+        // Only now drop the hash: wiping it up front left a late scroll with
+        // nothing to aim at, while keeping it means a reload would jump to the
+        // section instead of the hero.
+        if (window.location.hash) {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+          );
+        }
+        ScrollTrigger.refresh();
+      }
     };
     requestAnimationFrame(settle);
 
