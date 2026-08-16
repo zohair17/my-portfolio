@@ -89,11 +89,22 @@ export default function SmoothScroll({ children }) {
         window.scrollTo(0, 0);
       }
       if (++tries < 12) setTimeout(settle, 70);
+      else ScrollTrigger.refresh();
     };
     requestAnimationFrame(settle);
 
+    // Every ScrollTrigger start/end is measured once, on creation — which here
+    // happens while the loader still has the body locked and before the restore
+    // above has moved us. Left stale, a section we land past never fires and its
+    // entrance tween sits frozen on its "from" values (skewed cards, hidden
+    // text). Re-measuring after the overlay clears and after the scroll settles
+    // fixes both cases.
+    const remeasure = () => ScrollTrigger.refresh();
+    window.addEventListener("loader:done", remeasure);
+
     return () => {
       cancelled = true;
+      window.removeEventListener("loader:done", remeasure);
       gsap.ticker.remove(tick);
       lenis.destroy();
       delete window.__lenis;
