@@ -3,6 +3,100 @@
 // public/asset/<Folder>/. Captions/case-study copy are easy to edit.
 
 export const PROJECTS = {
+  "villa-aurelia": {
+    name: "Villa Aurelia",
+    tagline: "Real Estate · Luxury Residence",
+    summary:
+      "A cinematic sales site for a private waterfront villa on Palm Jumeirah — a scroll-driven walkthrough of the residence, an interactive floor plan and a private-viewing funnel.",
+    video: "/asset/Real%20Estate/video.mp4",
+    hero: "/asset/Real%20Estate/hero.webp",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "Villa Aurelia is a single high-end residence, so the site is built to sell one property the way a private agent would show it — slowly, room by room, at golden hour. A black-and-gold identity, editorial serif type and full-bleed footage carry the visitor from the approach to the terrace before a single form appears.",
+      sections: [
+        { title: "The Challenge", body: "Luxury listings usually arrive as a grid of photos and a spec table, which flattens a one-off home into a commodity. The site needed to convey scale, light and setting — and still give a serious buyer every number they need to book a viewing." },
+        { title: "The Approach", body: "The homepage is a guided walkthrough: each scroll step moves the camera through the villa — the approach, the living room, the terrace, the view at sunset — with a short line of copy and key figures per scene. Below it, a room-by-room gallery, an interactive floor plan, a specification grid and a location map give the hard detail, ending in a private-viewing request." },
+        { title: "The Outcome", body: "The result feels like being shown the house rather than browsing a listing. Emotion comes first and the facts follow in calm, well-structured sections, so the path from first impression to “Request the viewing” is clear and unhurried." },
+      ],
+    },
+    shots: [
+      { src: "/asset/Real%20Estate/hero.webp", title: "Hero — Where the Horizon Comes Home", body: "An aerial view of the villa above the water opens the site, with “Villa Aurelia” set in a light serif with a gold italic accent. A Start the Walkthrough button, the guide price and quick facts — bedroom suites, bathrooms, built area and infinity-pool length — sit along the bottom." },
+      { src: "/asset/Real%20Estate/1.webp", title: "The Approach", body: "The first stop of the scroll-driven walkthrough: the camera drifts over the limestone canopy and pool while the copy describes the arrival. Each scene carries its own numbered label and a row of figures, so the tour reads like chapters." },
+      { src: "/asset/Real%20Estate/2.webp", title: "Living Room", body: "Inside, the tour moves past a floating oak staircase into a double-height living room that opens straight onto the sea. Warm cove lighting and full-height glazing do the selling — the interface steps back and lets the footage lead." },
+      { src: "/asset/Real%20Estate/3.webp", title: "Two Hundred Metres of Open Air", body: "The upper terrace scene frames the bay through frameless glass, yachts on the water and the hills beyond — the moment the site uses to sell the setting, not just the square metres." },
+      { src: "/asset/Real%20Estate/4.webp", title: "The Whole of It, at Golden Hour", body: "The walkthrough closes at sunset over the coastline with a summary of the plot, built area and private beach, and a final call to start the full tour or request the brochure." },
+      { src: "/asset/Real%20Estate/5.webp", title: "Gallery — Room by Room", body: "A large image viewer with a thumbnail strip steps through the commissioning shoot. Each frame comes with a title, a short caption and the relevant specs, such as the front elevation’s pool length and materials." },
+      { src: "/asset/Real%20Estate/6.webp", title: "Floor Plans — Every Metre Accounted For", body: "An interactive plan of the ground level. Hovering a room in the list highlights it on the drawing, with its area in square metres, and tabs switch between levels — the terrace and infinity pool are marked as outdoor space." },
+      { src: "/asset/Real%20Estate/7.webp", title: "Specification — What Is Built In", body: "A grid of amenity tiles — infinity pool, private beach, sky lounge, wellness suite, cinema, chef’s kitchen, gallery garage, staff quarters and smart home — sits beside a technical schedule covering structure, glazing, stone and climate control." },
+      { src: "/asset/Real%20Estate/8.webp", title: "Private Viewing — Come and See It", body: "The booking form asks for name, email, phone, a preferred date and a time slot (including a sunset slot), next to notes on private appointments led by the architect and the listing’s permit and reference details." },
+      { src: "/asset/Real%20Estate/9.webp", title: "Footer", body: "A quiet black footer repeats the tagline, address and contact details, lists the residence and enquiry links and closes with a large “VILLA AURELIA” wordmark." },
+    ],
+  },
+
+  "vyn-interior": {
+    name: "VYN Interior",
+    tagline: "Interior Design · Studio Website",
+    summary:
+      "A full-screen, scroll-driven site for a Zürich interior-fit-out studio — each service is its own cinematic room, from floor coverings and shading to acoustics and installation.",
+    video: "/asset/Interior%20Design/video.mp4",
+    hero: "/asset/Interior%20Design/hero.webp",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "VYN Interior fits out offices and homes — floors, ceilings, curtains, shading, furniture and acoustics. Rather than a list of services, the site walks the visitor through a building: every scroll step is a new space showing one service in place, with a short headline and a single paragraph.",
+      sections: [
+        { title: "The Challenge", body: "Fit-out studios offer many services that are hard to tell apart from text alone — a “raised floor” or an “acoustic ceiling” means little until you see it. The site had to explain eleven services quickly while still feeling like a premium design studio." },
+        { title: "The Approach", body: "A full-screen, section-snapping layout turns each service into a dark, warmly lit room with a serif headline, one line of copy and a side index showing progress (01 — 11). Transitions move the camera from the entrance through the building, then into a portfolio wall, an about section and a contact page." },
+        { title: "The Outcome", body: "The site reads like a guided tour of finished work. Each service is shown rather than described, the calm palette and type keep it high-end, and the contact section closes the tour with a clear enquiry form and both office addresses." },
+      ],
+    },
+    shots: [
+      { src: "/asset/Interior%20Design/hero.webp", title: "Entrance", body: "The tour starts outside the studio’s building at night — a lit entrance under the VYN Interior canopy, a minimal header with email and menu, and a vertical index on the right that tracks progress through the eleven sections." },
+      { src: "/asset/Interior%20Design/1.webp", title: "Service 01 — Floor Coverings", body: "The camera glides across an open-plan office as the first service fades in: floor coverings, from carpet tile to solid country-house plank, chosen for use, acoustics and upkeep." },
+      { src: "/asset/Interior%20Design/2.webp", title: "Service 02 — Raised Floors", body: "The floor opens up to reveal the raised-floor grid beneath, showing the service in place — power, data and climate hidden under the usable surface, with layouts that stay changeable." },
+      { src: "/asset/Interior%20Design/3.webp", title: "Service 04 — Shading", body: "Close-up timber blinds fill the frame for the shading service — glare-free work and a calm façade, with systems matched to orientation, glazing and heat load." },
+      { src: "/asset/Interior%20Design/4.webp", title: "Service 05 — Furniture", body: "A row of oak desks under pendant lights introduces furniture: from contemporary design to antique single pieces, sourced, combined and reupholstered so old and new speak one language." },
+      { src: "/asset/Interior%20Design/5.webp", title: "Acoustics", body: "The camera looks up into a slatted timber ceiling with concealed lighting — the acoustics section, shown as a finished space rather than a technical diagram." },
+      { src: "/asset/Interior%20Design/6.webp", title: "Service 07 — Installation & Assembly", body: "A furnished lounge with a fluted wood media wall represents installation: delivery, fitting and finish by the studio’s own crews, measured on site and handed over clean." },
+      { src: "/asset/Interior%20Design/7.webp", title: "Portfolio — Nine Works", body: "Nine framed project photos hang on a gallery wall inside the room, turning the portfolio into part of the tour instead of a separate grid page." },
+      { src: "/asset/Interior%20Design/8.webp", title: "About — We Stand Up for Our Values", body: "A bold sans-serif statement sits beside a framed portrait of the founder, Elias Brunner, adding a human face to the studio before the closing contact section." },
+      { src: "/asset/Interior%20Design/9.webp", title: "Contact — Let’s Talk About Your Project", body: "The tour ends back at the building at night with an enquiry form (name, email, phone, project), the studio’s email and phone, and the Zürich and Zug office addresses." },
+    ],
+  },
+
+  "sam-automobiles": {
+    name: "Sam Automobiles",
+    tagline: "Car Showroom · Dealership Website",
+    summary:
+      "An immersive showroom site for a car dealership — step inside, browse cars on the floor, then explore a Mercedes-Benz engine, interior and rear profile through interactive hotspots.",
+    video: "/asset/Showroom/video.mp4",
+    hero: "/asset/Showroom/hero.webp",
+    caseStudy: {
+      role: "Design & Front-End Development",
+      timeline: "Concept build",
+      overview:
+        "Sam Automobiles sells certified pre-owned premium cars. The site recreates a visit to the dealership: a branded loader, the storefront, a walk into the showroom and a close look at a car — engine, cabin and rear — before browsing the collection and booking a visit.",
+      sections: [
+        { title: "The Challenge", body: "Dealership websites tend to be stock-photo grids and filter panels that feel nothing like walking onto a showroom floor. The goal was to bring that in-person experience online while still making it quick to see what’s in stock and get in touch." },
+        { title: "The Approach", body: "A scroll-driven sequence moves from the storefront through the glass doors into a lit showroom, where a carousel switches between cars on the floor. Scrolling further opens the bonnet and the door, and glass-panel hotspots label key specs — engine output, displays, ambient lighting, alloys and tail lights — before a collection grid and a booking form." },
+        { title: "The Outcome", body: "The site feels like a guided walk around the car with a salesperson. The detailed hotspots build trust in each listing, and the path from browsing to “Book a visit” stays short and obvious." },
+      ],
+    },
+    shots: [
+      { src: "/asset/Showroom/hero.webp", title: "The Storefront", body: "After a branded loader with a car speeding across a progress bar, the site opens on the Sam Automobiles storefront with cars parked out front — the starting point of the virtual visit." },
+      { src: "/asset/Showroom/1.webp", title: "On the Floor — BMW", body: "Scrolling walks you through the glass doors into the showroom. A carousel (01 / 02) puts a black BMW M5 at the centre of the floor under track lighting, with arrows to switch cars." },
+      { src: "/asset/Showroom/2.webp", title: "On the Floor — Mercedes-Benz", body: "The carousel moves to a white Mercedes-Benz E-Class (02 / 02) with a “Scroll to explore” cue, which starts the close-up tour of this car." },
+      { src: "/asset/Showroom/3.webp", title: "Engine", body: "The bonnet lifts and the camera pushes into the engine bay. A section menu — Engine, Exterior, Interior, Rear — shows where you are in the tour." },
+      { src: "/asset/Showroom/4.webp", title: "Interior — Hotspots", body: "The driver’s door opens onto the cabin. Glowing hotspots label the dual 12.3” displays, 64-colour ambient lighting, Burmester sound, AMG steering, brushed steel pedals and heated memory seats, summarised in a glass panel with an “Explore 360° view” button." },
+      { src: "/asset/Showroom/5.webp", title: "Rear Profile", body: "The car turns to show its rear, with a spec panel listing the 2.0L turbo engine, 255 HP, 0–100 km/h in 6.2 s and a 250 km/h top speed, plus hotspots on the full-LED tail lights, AMG badge, spoiler, 19” alloys and twin chrome tips." },
+      { src: "/asset/Showroom/6.webp", title: "The White Collection", body: "The car drives out onto a city road while a panel lists certified pre-owned Mercedes-AMG models — GT S, C 63 S, E 63 S and GLE 43 — each with mileage, year and price." },
+      { src: "/asset/Showroom/7.webp", title: "Book a Visit", body: "The tour ends back at the storefront with a Book a Visit form — name, phone, email, the car you’re interested in and a message — so the next step is a real visit to the dealership." },
+    ],
+  },
+
   darimooch: {
     name: "Dari Mooch",
     tagline: "Men's Grooming · Website Revamp",
